@@ -20,8 +20,9 @@
     --primary-tint:#DEEFE4;
     --accent:#96501C;
     --accent-tint:#F7E7D6;
-    --good:#2E7D4F;
+    --good:#276B43;
     --good-tint:#E4F3EA;
+    --on-solid:#FFFFFF;
     --warn:#96501C;
     --warn-tint:#F7E7D6;
     --mark:#8A5A12;
@@ -49,6 +50,7 @@
       --ink-soft:#A9C2B2;
       --ink-faint:#87A895;
       --line:#2A4235;
+      --on-solid:#0E1C16;
       --primary:#6FCB9F;
       --primary-strong:#A8E0C1;
       --primary-tint:#1B3527;
@@ -83,6 +85,7 @@
     --ink-soft:#A9C2B2;
     --ink-faint:#87A895;
     --line:#2A4235;
+    --on-solid:#0E1C16;
     --primary:#6FCB9F;
     --primary-strong:#A8E0C1;
     --primary-tint:#1B3527;
@@ -283,7 +286,7 @@
   .ar-row h3{ display:flex; align-items:center; gap:9px; font-size:13.5px; font-weight:700; margin-bottom:9px; }
   .ar-row .ico{
     width:23px;height:23px;border-radius:7px;flex:none; display:flex;align-items:center;justify-content:center;
-    font-size:12px; font-weight:900; color:#fff;
+    font-size:12px; font-weight:900; color:var(--on-solid);
   }
   .ico.severity{ background:var(--bad); }
   .ico.pattern{ background:var(--primary-strong); }
@@ -294,7 +297,7 @@
 
   .reveal-btn{
     width:100%; margin-top:22px; appearance:none; border:none; cursor:pointer;
-    background:var(--primary); color:#fff; font-weight:700; font-size:15px;
+    background:var(--primary); color:var(--on-solid); font-weight:700; font-size:15px;
     padding:15px; border-radius:14px; font-family:inherit;
     box-shadow:0 4px 14px rgba(23,90,57,.28);
   }
@@ -322,7 +325,7 @@
     margin-bottom:10px;
   }
   .pitfall-block .pf-mark{
-    width:26px;height:26px;border-radius:50%;background:var(--warn);color:#fff;
+    width:26px;height:26px;border-radius:50%;background:var(--warn);color:var(--on-solid);
     display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;flex:none;
   }
   .pitfall-block p{ margin:0; font-size:15px; color:var(--ink); line-height:1.75; }
@@ -345,7 +348,7 @@
     font-size:13px; font-weight:700; color:var(--primary-strong); margin-bottom:8px;
   }
   .rx-mark{
-    width:22px;height:22px;border-radius:7px;background:var(--primary);color:#fff;
+    width:22px;height:22px;border-radius:7px;background:var(--primary);color:var(--on-solid);
     display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;flex:none;
     font-family:"Zen Kaku Gothic New",sans-serif;
   }
@@ -376,13 +379,14 @@
     flex:1; appearance:none; cursor:pointer; border-radius:12px; padding:13px 6px;
     font-family:inherit; font-size:12.5px; font-weight:700; line-height:1.4;
     border:1.5px solid var(--line); background:var(--surface); color:var(--ink-soft);
+    min-height:44px;
   }
   .assess-btn.good{ border-color:var(--good); }
   .assess-btn.partial{ border-color:var(--warn); }
   .assess-btn.poor{ border-color:var(--bad); }
-  .assess-btn.good.active{ background:var(--good); color:#fff; }
-  .assess-btn.partial.active{ background:var(--warn); color:#fff; }
-  .assess-btn.poor.active{ background:var(--bad); color:#fff; }
+  .assess-btn.good.active{ background:var(--good); color:var(--on-solid); }
+  .assess-btn.partial.active{ background:var(--warn); color:var(--on-solid); }
+  .assess-btn.poor.active{ background:var(--bad); color:var(--on-solid); }
   .save-warning{
     margin-top:12px; padding:10px 14px; border-radius:10px;
     background:var(--bad-tint); color:var(--bad); font-size:12.5px; font-weight:600; line-height:1.5;
@@ -391,7 +395,7 @@
   .after-assess{ margin-top:22px; display:flex; flex-direction:column; gap:10px; animation:fadein .3s ease; }
   @keyframes fadein{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
   .nav-btn{ appearance:none; border:none; cursor:pointer; border-radius:12px; padding:14px; font-family:inherit; font-size:14.5px; font-weight:700; text-align:center; }
-  .nav-btn.primary{ background:var(--primary); color:#fff; }
+  .nav-btn.primary{ background:var(--primary); color:var(--on-solid); }
   .nav-btn.ghost{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
 
   /* ---------- APPROACH (初動まとめ) VIEW ---------- */
@@ -412,7 +416,7 @@
   .flow-step:last-child{ padding-bottom:0; }
   .flow-step .rail{ display:flex; flex-direction:column; align-items:center; flex:none; }
   .flow-step .node{
-    width:32px; height:32px; border-radius:50%; background:var(--primary); color:#fff;
+    width:32px; height:32px; border-radius:50%; background:var(--primary); color:var(--on-solid);
     display:flex; align-items:center; justify-content:center; font-weight:900; font-size:13px;
     font-family:"Zen Kaku Gothic New",sans-serif; flex:none; z-index:1;
   }
@@ -466,7 +470,7 @@
   button:focus-visible, textarea:focus-visible, .case-card:focus-visible{ outline:2px solid var(--primary); outline-offset:2px; }
 
   @media (max-width:380px){
-    .assess-btn{ font-size:11px; padding:12px 3px; }
+    .assess-btn{ font-size:11px; padding:12px 3px; min-height:44px; }
   }
 
   @media (hover:hover){
@@ -488,14 +492,14 @@
 (function(){
   "use strict";
 
-  var CAT_LABEL = { pattern:"肝機能障害の基本：パターン認識と鑑別の型", danger:"見逃してはいけない急性・重症肝障害", chronic:"慢性肝疾患とウイルス肝炎の特殊病態" };
+  var CAT_LABEL = { pattern:"肝機能障害のパターン認識と鑑別の基本", danger:"見逃してはいけない急性・重症肝障害", chronic:"慢性肝疾患とウイルス肝炎の特殊病態" };
   var CAT_BADGE = { pattern:"型", danger:"急", chronic:"慢" };
 
   var CASES = [
     {
       id:"checkup_alt", num:1, cat:"pattern", tag:"基本・パターン認識",
       title:"健診で指摘されたALT上昇 ― パターン認識とFIB-4の基本", hint:"45歳男性・職場健診でAST/ALT上昇を指摘され受診・自覚症状なし",
-      vignette:"45歳男性。会社の定期健診で肝機能異常を指摘され受診した。自覚症状はなく、体重は増加傾向。健診結果を持参しており、2年前の健診でもALTはやや高値だったという。飲酒はビールを毎日500mL程度、休肝日はほとんどない。市販薬やサプリメントの常用はない。",
+      vignette:"45歳男性。会社の定期健診で肝機能異常を指摘され受診した。自覚症状はなく、体重は増加傾向。健診結果を持参しており、2年前の健診でもALTはやや高値だったという。飲酒はビール(アルコール度数5%)を毎日1000mL程度、休肝日はほとんどない。市販薬やサプリメントの常用はない。",
       labs:[ {k:"AST",v:"138",u:"U/L",abn:"high"}, {k:"ALT",v:"182",u:"U/L",abn:"high"}, {k:"ALP",v:"88",u:"U/L",abn:"normal"}, {k:"血小板",v:"24.8",u:"万/μL",abn:"normal"} ],
       finding:"身体所見:黄疸なし、腹部に圧痛や腫瘤を触れず、脾腫なし。BMI 27.8、腹囲94cm。血圧138/86mmHg、空腹時血糖112mg/dL。",
       prompts:{
@@ -507,21 +511,21 @@
       answer:{
         severity:["無症状の軽度〜中等度のALT上昇そのものは緊急対応を要しないが、<mark>2年前から持続しているという経時変化</mark>を確認することが重要。一回の数値ではなく、上昇が急激か慢性的かで対応が変わる","黄疸・腹水・意識障害など急性増悪を示す所見がないか、念のため確認しておく"],
         pattern:["<mark>R比 = (ALT実測値÷ALT基準上限) ÷ (ALP実測値÷ALP基準上限)</mark> で障害パターンを分類する。本例はALT182(基準上限35として約5.2倍)に対しALPは基準範囲内(88/115≈0.77)であり、<mark>R比≈6.8で肝細胞障害型</mark>と判定できる","ALT優位の肝細胞障害型であり、胆道疾患よりも<mark>肝細胞そのものの障害(脂肪性肝疾患・アルコール・ウイルス・薬剤など)</mark>を中心に鑑別する"],
-        workup:["<mark>飲酒量を具体的に(種類・量・頻度・最終飲酒日)聴取</mark>する。本例はビール500mL/日相当をほぼ毎日で、アルコール関連肝疾患の関与も否定できない量","<mark>肝炎ウイルスマーカー(HBs抗原、HCV抗体)</mark>と自己抗体・IgGは初回に一通り確認し、頻度の高い原因を丸ごと見逃さないようにする","<mark>FIB-4 index = (年齢×AST) ÷ (血小板数[10⁹/L]×√ALT)</mark> を計算する。本例は血小板24.8万/μL=248×10⁹/Lとして 45×138÷(248×√182)=6210÷(248×13.5)≈1.85 となり、<mark>65歳未満のカットオフ(<1.3:低リスク、>2.67:高リスク)ではindeterminate(中間)域</mark>に入る","腹部超音波で脂肪肝の有無、肝腫大、腫瘤性病変がないかを確認する"]
+        workup:["<mark>飲酒量を具体的に(種類・量・頻度・最終飲酒日)聴取し、純アルコール量に換算</mark>する。本例はビール1000mL(5%)/日で純アルコール約40g/日(週280g相当)であり、MASLD男性の目安(週210g未満)を超える量","<mark>肝炎ウイルスマーカー(HBs抗原、HCV抗体)</mark>と自己抗体・IgGは初回に一通り確認し、頻度の高い原因を丸ごと見逃さないようにする","<mark>FIB-4 index = (年齢×AST) ÷ (血小板数[10⁹/L]×√ALT)</mark> を計算する。本例は血小板24.8万/μL=248×10⁹/Lとして 45×138÷(248×√182)=6210÷(248×13.5)≈1.85 となり、<mark>65歳未満のカットオフ(<1.3:低リスク、>2.67:高リスク)ではindeterminate(中間)域</mark>に入る","腹部超音波で脂肪肝の有無、肝腫大、腫瘤性病変がないかを確認する"]
         ,
-        action:["<mark>体重・血圧・血糖など心血管代謝リスク因子が1つ以上あり、他の原因が否定的なら、いわゆるMASLD(代謝機能障害関連脂肪性肝疾患)の可能性を考え、まず生活習慣(減量・運動・節酒)の指導</mark>から開始する。ただし本例は飲酒量も無視できず、<mark>純粋なMASLDと言い切れるかは飲酒量次第で変わる(MetALDという概念もある)</mark>点も説明する","<mark>検査値は一回だけで判断せず、数か月をめどに再検し、上昇が持続する場合やFIB-4がindeterminate/高リスクの場合は消化器・肝臓専門医に紹介</mark>し、エラストグラフィなどの追加評価につなげる"]
+        action:["<mark>体重・血圧・血糖など心血管代謝リスク因子が1つ以上あり(空腹時血糖112mg/dLは100mg/dL以上でリスク因子に該当)、他の原因が否定的なら脂肪性肝疾患を考える</mark>。ただし本例は純アルコール量が週210g(男性のMASLD/MetALD境界の目安)を超えており、<mark>代謝異常とアルコールの両方が関与するMetALD(代謝機能障害とアルコール関連の脂肪性肝疾患)に該当しうる</mark>ため、節酒指導は生活習慣指導の中でも優先度が高い","<mark>検査値は一回だけで判断せず、数か月をめどに再検し、上昇が持続する場合やFIB-4がindeterminate/高リスクの場合は消化器・肝臓専門医に紹介</mark>し、エラストグラフィなどの追加評価につなげる"]
       },
       rx:["禁酒または大幅な節酒(目安として1日の純アルコール量を20g以下、可能なら休肝日を設ける)と、体重の5〜10%減量を目標とした生活指導を行う","ウイルスマーカーが陰性で他の原因が否定的であれば、糖尿病・脂質異常症・高血圧など併存する代謝異常の治療を並行して進める","FIB-4がindeterminate〜高リスクの場合や、生活指導後も肝機能異常が持続する場合は、肝臓専門医への紹介とエラストグラフィ(FibroScan等)による線維化評価を検討する"],
       pitfall:"「健診異常だから経過観察でよい」「ALTが高いだけで脂肪肝・アルコール性と決めつける」のはいずれも誤り。<mark>AST優位=アルコール性、ALT優位=脂肪肝と単純に決めつけず、ウイルスマーカーなど頻度の高い原因は一通り確認</mark>したうえで、経時変化とFIB-4で次のアクションを決める。",
-      pearl:["AST・ALTは<mark>肝細胞障害</mark>、ALP・γ-GTPは<mark>胆汁うっ滞</mark>の指標であり、両者からR比を計算するとパターンを客観的に分類できる","MASLDの診断には<mark>脂肪肝の存在に加え、肥満・糖尿病・高血圧・脂質異常のいずれか1つ以上の心血管代謝リスク因子</mark>が必要で、他の原因(ウイルス性・アルコール性など)の除外が前提となる","<mark>FIB-4 indexは65歳未満は<1.3(低リスク)/>2.67(高リスク)、65歳以上は<2.0(低リスク)/>2.67(高リスク)</mark>とカットオフが年齢で異なる","一回の異常値ではなく<mark>経時変化</mark>を見ることが重要で、健診結果を複数年分並べて確認する習慣をつける"],
-      refs:[ {author:"Rinella ME, Lazarus JV, Ratziu V, et al.", title:"A multi-society Delphi consensus statement on new fatty liver disease nomenclature（新命名法の解説）", source:"AASLD", year:"2023", url:"https://www.aasld.org/new-masld-nomenclature"}, {author:"Sterling RK, Lissen E, Clumeck N, et al.", title:"Development of a simple noninvasive index to predict significant fibrosis in patients with HIV/HCV coinfection（FIB-4の原著）", source:"Hepatology 43(6):1317-1325", year:"2006", url:"https://pubmed.ncbi.nlm.nih.gov/16729309/"}, {author:"日本肝臓学会.", title:"C型肝炎治療ガイドライン（ウイルスマーカーの選択・解釈）", source:"jsh.or.jp", url:"https://www.jsh.or.jp/medical/guidelines/jsh_guidlines/hepatitis_c.html"} ]
+      pearl:["AST・ALTは<mark>肝細胞障害</mark>、ALP・γ-GTPは<mark>胆汁うっ滞</mark>の指標であり、両者からR比を計算するとパターンを客観的に分類できる","MASLDの診断には<mark>脂肪肝の存在に加え、肥満(BMI≥25)・糖代謝異常(空腹時血糖≥100mg/dLを含む)・高血圧・脂質異常のいずれか1つ以上の心血管代謝リスク因子</mark>が必要で、他の原因(ウイルス性・アルコール性など)の除外が前提となる","<mark>FIB-4 indexは65歳未満は<1.3(低リスク)/>2.67(高リスク)、65歳以上は<2.0(低リスク)/>2.67(高リスク)</mark>とカットオフが年齢で異なる","一回の異常値ではなく<mark>経時変化</mark>を見ることが重要で、健診結果を複数年分並べて確認する習慣をつける"],
+      refs:[ {author:"Rinella ME, Lazarus JV, Ratziu V, et al.", title:"A multisociety Delphi consensus statement on new fatty liver disease nomenclature（新命名法の解説）", source:"AASLD", year:"2023", url:"https://www.aasld.org/new-masld-nomenclature"}, {author:"Sterling RK, Lissen E, Clumeck N, et al.", title:"Development of a simple noninvasive index to predict significant fibrosis in patients with HIV/HCV coinfection（FIB-4の計算式の原著。年齢別カットオフは後続の検証研究による）", source:"Hepatology 43(6):1317-1325", year:"2006", url:"https://pubmed.ncbi.nlm.nih.gov/16729309/"}, {title:"Spare Me the Jab: Noninvasive Assessment of Patients with MASLD（年齢別FIB-4カットオフの解説）", source:"AASLD Liver Fellow Network", url:"https://www.aasld.org/liver-fellow-network/core-series/clinical-pearls/spare-me-jab-noninvasive-assessment-patients-masld"}, {author:"日本肝臓学会.", title:"C型肝炎治療ガイドライン（ウイルスマーカーの選択・解釈）", source:"jsh.or.jp", url:"https://www.jsh.or.jp/medical/guidelines/jsh_guidlines/hepatitis_c.html"} ]
     },
     {
       id:"fever_jaundice_cholangitis", num:2, cat:"danger", tag:"急性期・緊急",
       title:"発熱と黄疸 ― 胆道系危険信号の初期評価", hint:"68歳女性・悪寒戦慄を伴う発熱と黄疸で救急搬送・総胆管結石の既往",
       vignette:"68歳女性。3年前に総胆管結石の既往がある。昨夜からの悪寒戦慄を伴う発熱と心窩部〜右季肋部の持続する痛みで救急搬送された。体温39.4℃、脈拍112/分、血圧98/62mmHg。皮膚・眼球結膜に黄染を認める。右季肋部に圧痛があるが、深呼吸を止めさせるほど著明な圧痛は明らかではない。輸液を開始したが、収縮期血圧は90mmHg台前半で推移している。",
-      labs:[ {k:"WBC",v:"16800",u:"/μL",abn:"high"}, {k:"CRP",v:"18.2",u:"mg/dL",abn:"high"}, {k:"総ビリルビン",v:"4.8",u:"mg/dL",abn:"high"}, {k:"ALP",v:"512",u:"U/L",abn:"high"} ],
-      finding:"腹部超音波:総胆管の拡張(11mm)と、その末梢に軽度の肝内胆管拡張を認める。胆嚢内に結石を疑う所見あり。血液培養2セットを提出済み。",
+      labs:[ {k:"WBC",v:"16800",u:"/μL",abn:"high"}, {k:"CRP",v:"18.2",u:"mg/dL",abn:"high"}, {k:"総ビリルビン",v:"4.8",u:"mg/dL",abn:"high"}, {k:"ALP",v:"512",u:"U/L",abn:"high"}, {k:"AST",v:"78",u:"U/L",abn:"high"}, {k:"ALT",v:"96",u:"U/L",abn:"high"} ],
+      finding:"腹部超音波:総胆管の拡張(11mm)と、その末梢に軽度の肝内胆管拡張を認める。胆嚢内に結石を疑う所見あり。",
       prompts:{
         severity:{ label:"バイタルサインと検査値から、この患者の重症度をどう評価するか", ph:"TG18の診断・重症度基準、循環動態の解釈など…" },
         pattern:{ label:"検査値のパターンから、どの障害型と考え、鑑別に何を挙げるか", ph:"R比、胆汁うっ滞型の原因(閉塞性/非閉塞性)など…" },
@@ -530,9 +534,9 @@
       },
       answer:{
         severity:["<mark>発熱・腹痛・黄疸に加え、意識障害や乏尿、酸素化低下、著明な血小板減少・PT-INR延長などの臓器障害所見がないかを確認</mark>する。本例は血圧がやや低いが、輸液後も90mmHg台前半にとどまり<mark>昇圧薬を要する明らかなショックではない</mark>ため、現時点で臓器障害(重症)の基準を満たすとは言い切れない","<mark>Tokyo Guidelines 2018(TG18)の中等症基準(白血球異常・39℃以上の発熱・75歳以上・総ビリルビン5mg/dL以上・アルブミン低値のうち2項目以上)</mark>に照らすと、本例は白血球16800(異常)と体温39.4℃(≥39℃)の<mark>2項目を満たし中等症(Grade II)</mark>に該当する。ただし<mark>循環動態は輸液への反応を見ながら再評価し、悪化すれば重症(Grade III)への切り替えを躊躇しない</mark>"],
-        pattern:["<mark>ALP優位でR比は低値(胆汁うっ滞型)</mark>であり、閉塞性黄疸を積極的に疑うパターン。総胆管結石の既往と心窩部痛・発熱を合わせ、<mark>急性胆管炎を第一に鑑別に挙げる</mark>","胆汁うっ滞型の原因は<mark>閉塞性(結石・腫瘍・狭窄)と非閉塞性(薬剤性・原発性胆汁性胆管炎など)</mark>に分けて考える。発熱・腹痛を伴う急性経過は閉塞性・感染性を強く示唆する"],
-        workup:["<mark>抗菌薬投与前に血液培養2セットを採取</mark>する(本例は既に実施済み)","<mark>腹部超音波を第一選択</mark>として胆管拡張・胆石の有無を確認し、診断がつかない場合や詳細な胆道解剖の評価が必要な場合はCTやMRCPに進む","診断は<mark>TG18のA(全身炎症所見)・B(胆汁うっ滞)・C(画像での胆管拡張または胆管炎の成因所見)</mark>の組み合わせで確定する"],
-        action:["<mark>血液培養採取後、速やかに広域抗菌薬(例:タゾバクタム/ピペラシリン、またはセフトリアキソン+メトロニダゾール)を開始</mark>し、循環動態が安定するよう輸液を行う","<mark>中等症(Grade II)以上では早期(24時間以内が目安)の内視鏡的または経皮的胆道ドレナージ</mark>を消化器内科・外科に相談する。軽症(Grade I)は抗菌薬と全身管理でまず反応を見てもよいが、無効なら同様にドレナージを検討する","循環動態が悪化し臓器障害が明らかになれば<mark>重症(Grade III)として緊急ドレナージと呼吸・循環管理</mark>に切り替える","<mark>PT-INR延長があっても、活動性出血や侵襲的処置の前でない限り新鮮凍結血漿を安易に投与しない</mark>(重症度の指標を不必要に修飾してしまう)"]
+        pattern:["<mark>R比 = (ALT96÷基準上限35≈2.74) ÷ (ALP512÷基準上限115≈4.45) ≈0.6でR比低値(胆汁うっ滞型)</mark>であり、閉塞性黄疸を積極的に疑うパターン。総胆管結石の既往と心窩部痛・発熱を合わせ、<mark>急性胆管炎を第一に鑑別に挙げる</mark>","胆汁うっ滞型の原因は<mark>閉塞性(結石・腫瘍・狭窄)と非閉塞性(薬剤性・原発性胆汁性胆管炎など)</mark>に分けて考える。発熱・腹痛を伴う急性経過は閉塞性・感染性を強く示唆する"],
+        workup:["<mark>抗菌薬投与前に血液培養2セットを採取</mark>する","<mark>腹部超音波を第一選択</mark>として胆管拡張・胆石の有無を確認し、診断がつかない場合や詳細な胆道解剖の評価が必要な場合はCTやMRCPに進む","<mark>膵炎の合併を除外するため膵酵素(リパーゼまたはアミラーゼ)も確認</mark>し、PT-INRも重症度評価のため測定する","診断は<mark>TG18のA(全身炎症所見)・B(胆汁うっ滞)・C(画像での胆管拡張または胆管炎の成因所見)</mark>の組み合わせで確定する"],
+        action:["<mark>血液培養採取後、速やかに広域抗菌薬(例:タゾバクタム/ピペラシリン、またはセフトリアキソン+メトロニダゾール)を開始</mark>し、循環動態が安定するよう輸液を行う","<mark>中等症(Grade II)以上では早期の内視鏡的または経皮的胆道ドレナージ</mark>を消化器内科・外科に相談する(TG18自体は具体的な時間を規定していないが、実臨床では24〜48時間以内を目安とすることが多い)。軽症(Grade I)は抗菌薬と全身管理でまず反応を見てもよいが、無効なら同様にドレナージを検討する","循環動態が悪化し臓器障害が明らかになれば<mark>重症(Grade III)として緊急ドレナージと呼吸・循環管理</mark>に切り替える","<mark>PT-INR延長があっても、活動性出血や侵襲的処置の前でない限り新鮮凍結血漿を安易に投与しない</mark>(重症度の指標を不必要に修飾してしまう)"]
       },
       rx:["タゾバクタム/ピペラシリン4.5gを6〜8時間ごとに静注、またはセフトリアキソン1〜2g/日+メトロニダゾール500mgを8時間ごとに静注。腎機能に応じて用量調整し、培養結果に基づき48〜72時間を目安にde-escalationを検討する","早期の内視鏡的逆行性胆管膵管造影(ERCP)による乳頭切開・砕石・ステント留置、または経皮経肝胆道ドレナージ(PTCD)を消化器内科・外科と相談する","治療期間は<mark>ドレナージが十分に行われ原因(結石など)が除去された場合は短期化できる</mark>ことが多いが、菌血症の程度や原因の残存状況により個別に判断する"],
       pitfall:"<mark>「黄疸患者を見たら肝炎パターンばかり考え、胆道閉塞の除外を後回しにする」</mark>のはよくある誤り。発熱・腹痛を伴う胆汁うっ滞型黄疸では、まず腹部超音波で胆管拡張の有無を確認し、急性胆管炎を積極的に除外する。逆に<mark>「発熱+黄疸=胆管炎」と決めつけて他の原因(ウイルス性肝炎、肝膿瘍など)の検討を怠らない</mark>ことも重要。",
@@ -542,9 +546,9 @@
     {
       id:"ici_hepatitis", num:3, cat:"danger", tag:"薬剤性・免疫関連",
       title:"免疫チェックポイント阻害薬治療中の肝障害", hint:"62歳男性・進行肺癌にニボルマブ投与中・倦怠感と肝機能悪化",
-      vignette:"62歳男性。進行非小細胞肺癌に対しニボルマブ単剤療法を8週間前から4回投与されている。1週間前からの倦怠感と食欲低下を主訴に外来を受診した。体温36.8℃、皮疹や関節痛はない。腹部に圧痛はなく、肝腫大は触知しない。新規の処方薬・サプリメント追加はなく、飲酒はほとんどしない。",
-      labs:[ {k:"AST",v:"245",u:"U/L",abn:"high"}, {k:"ALT",v:"410",u:"U/L",abn:"high"}, {k:"ALP",v:"130",u:"U/L",abn:"normal"}, {k:"総ビリルビン",v:"1.3",u:"mg/dL",abn:"normal"} ],
-      finding:"腹部超音波:肝腫大なし、胆管拡張なし、腫瘍による胆道閉塞を示唆する所見もない。肝炎ウイルスマーカー(HBs抗原、HCV抗体)は投与開始前に陰性を確認済み。",
+      vignette:"62歳男性。進行非小細胞肺癌に対しニボルマブ単剤療法を8週間前から4回投与されている。投与開始前のスクリーニングでHBs抗原・HCV抗体は陰性だった。1週間前からの倦怠感と食欲低下を主訴に外来を受診した。体温36.8℃、皮疹や関節痛はない。腹部に圧痛はなく、肝腫大は触知しない。",
+      labs:[ {k:"AST",v:"245",u:"U/L",abn:"high"}, {k:"ALT",v:"410",u:"U/L",abn:"high"}, {k:"ALP",v:"92",u:"U/L",abn:"normal"}, {k:"総ビリルビン",v:"0.9",u:"mg/dL",abn:"normal"}, {k:"PT-INR",v:"1.0",u:"",abn:"normal"} ],
+      finding:"腹部超音波:肝腫大なし、腹水なし、胆管拡張を認めない。",
       prompts:{
         severity:{ label:"この肝機能悪化の重症度を、CTCAEを踏まえてどう評価するか", ph:"ALT/AST・ビリルビンの何倍か、Grade分類、緊急性など…" },
         pattern:{ label:"検査パターンと臨床経過から、原因をどう考えるか", ph:"R比、他のDILI・ウイルス・自己免疫との鑑別など…" },
@@ -553,21 +557,21 @@
       },
       answer:{
         severity:["CTCAEでは<mark>ALT/ASTが基準上限の5〜20倍でGrade3、20倍超でGrade4</mark>とされる。本例はALT410(基準上限35として約11.7倍)で<mark>Grade3相当</mark>と評価できる。ビリルビン・PT-INRは保たれており、脳症などの肝不全兆候は今のところない","<mark>CTCAE分類はAST/ALT・ビリルビンの数値のみに基づくため、実際の重症度(黄疸・PT-INR延長・脳症の有無)と乖離しうる</mark>ことを念頭に置き、数値だけでなく臨床像(黄疸・PT-INR・症状の推移)も総合して判断する"],
-        pattern:["ALT優位でALPは基準範囲内であり、<mark>R比は高値(肝細胞障害型)</mark>と判定できる。胆道閉塞や腫瘍の直接浸潤よりも<mark>免疫関連の肝細胞障害</mark>を考えるパターン","ICI投与中の肝機能悪化は<mark>ICI関連肝炎(免疫介在性)、腫瘍の肝転移・胆道浸潤、他の薬剤性肝障害、ウイルス性肝炎(既存感染の再活性化を含む)</mark>を鑑別に挙げる"],
-        workup:["腹部超音波(必要ならCT)で<mark>腫瘍による胆道閉塞・肝転移を除外</mark>する","<mark>投与開始前に確認済みのウイルスマーカーを再確認</mark>し、新規の飲酒・薬剤・サプリメント使用がないか改めて問診する","自己免疫性肝炎に準じて<mark>抗核抗体・IgGなど</mark>も参考所見として確認することがある(ICI関連肝炎は組織学的に自己免疫性肝炎に類似するが、通常は自己抗体陰性のことが多い)"],
-        action:["<mark>Grade2(ALT/AST 3〜5倍、他の原因が否定的)の時点でICIを休薬</mark>し、Grade1へ改善するまで週1〜2回の肝機能フォローを行う。<mark>Grade3以上ではICIを中止し、副腎皮質ステロイドの開始を検討</mark>する","<mark>ステロイド開始後2〜3日で改善が乏しい場合はステロイド抵抗性を疑い、消化器内科・腫瘍内科と連携して追加治療</mark>を検討する。自己判断で経過観察を続けない","腫瘍治療の継続可否は<mark>回復後の再開(rechallenge)の是非を含め、腫瘍内科・肝臓内科で個別に協議</mark>する"]
+        pattern:["<mark>R比 = (ALT410÷基準上限35≈11.7) ÷ (ALP92÷基準上限115≈0.80) ≈14.6で高値(肝細胞障害型)</mark>と判定できる。胆道閉塞や腫瘍の直接浸潤よりも<mark>免疫関連の肝細胞障害</mark>を考えるパターン","ICI投与中の肝機能悪化は<mark>ICI関連肝炎(免疫介在性)、腫瘍の肝転移・胆道浸潤、他の薬剤性肝障害、ウイルス性肝炎(既存感染の再活性化を含む)</mark>を鑑別に挙げる"],
+        workup:["腹部超音波(必要ならCT)で<mark>腫瘍による胆道閉塞・肝転移を除外</mark>する","<mark>投与開始前に陰性だったウイルスマーカーを再検し、新規の処方薬・サプリメント・飲酒がないか改めて問診</mark>して他のDILI・ウイルス性肝炎の可能性を除外する","自己免疫性肝炎に準じて<mark>抗核抗体・IgGなど</mark>も参考所見として確認することがある(ICI関連肝炎は組織学的に自己免疫性肝炎に類似するが、通常は自己抗体陰性のことが多い)"],
+        action:["<mark>Grade2(ALT/AST 3〜5倍、他の原因が否定的)の時点でICIを休薬</mark>し、Grade1へ改善するまで週1〜2回の肝機能フォローを行う。<mark>Grade3以上ではICIを休薬しステロイドを開始</mark>する(重症例・再燃例では恒久中止を検討する)","<mark>ステロイド開始後3〜5日で改善が乏しい場合はステロイド抵抗性を疑い、消化器内科・腫瘍内科と連携して追加治療</mark>を検討する。自己判断で経過観察を続けない","腫瘍治療の継続可否は<mark>回復後の再開(rechallenge)の是非を含め、腫瘍内科・肝臓内科で個別に協議</mark>する"]
       },
-      rx:["Grade2:ICI休薬+週1〜2回の肝機能検査でフォロー。改善が乏しい、または悪化する場合はGrade3に準じて対応する","Grade3〜4:ICI中止+プレドニゾロン換算0.5〜2mg/kg/日を開始し、改善後は数週間かけて漸減する","ステロイド抵抗性(治療開始後2〜3日で反応不良)の場合はミコフェノール酸モフェチルなどの追加免疫抑制療法を専門科と相談する。肝障害に対するインフリキシマブは肝毒性のリスクがあるため通常使用しない"],
+      rx:["Grade2:ICI休薬+週1〜2回の肝機能検査でフォロー。改善が乏しい、または悪化する場合はGrade3に準じて対応する","Grade3:ICI休薬(重症例・再燃例では中止を検討)+プレドニゾロン換算0.5〜2mg/kg/日を開始し、改善後は数週間かけて漸減する。Grade4は原則ICI恒久中止としステロイドを開始する","ステロイド抵抗性(治療開始後3〜5日で反応不良)の場合はミコフェノール酸モフェチルなどの追加免疫抑制療法を専門科と相談する。肝障害に対するインフリキシマブは肝毒性のリスクがあるため通常使用しない"],
       pitfall:"<mark>ICI投与中の肝機能異常を「抗腫瘍薬だから仕方ない」と経過観察のみで様子を見る、あるいは逆に「ICI関連肝炎だろう」と決めつけてウイルス・胆道閉塞・他の薬剤性肝障害の除外を省略する</mark>のはいずれも危険。CTCAE Gradeだけで機械的に対応せず、臨床像(黄疸・PT-INR・症状)も併せて総合判断する。",
       pearl:["ICI関連肝障害はCTCAEでAST/ALT・ビリルビンの上昇度からGrade分類し、<mark>Grade2で休薬、Grade3以上で中止+ステロイド</mark>が基本方針","診断は<mark>他の原因(腫瘍浸潤・胆道閉塞・ウイルス・他剤性)を除外したうえでの除外診断</mark>であり、投与前のベースライン肝機能・ウイルスマーカーとの比較が重要","R比による肝細胞障害型/胆汁うっ滞型の分類は、ICI肝障害以外の原因(腫瘍浸潤・薬剤性)を考えるうえでも有用","ステロイド抵抗性の場合は自己判断で継続観察せず、早期に専門科と連携する"],
       refs:[ {author:"日本肝臓学会.", title:"免疫チェックポイント阻害薬による肝障害の診断・治療指針 2025", source:"jsh.or.jp", year:"2025", url:"https://www.jsh.or.jp/medical/guidelines/medicalinfo/shindan_chiryou.html"}, {author:"Fontana RJ, Liou I, Reuben A, et al.", title:"AASLD practice guidance on drug, herbal, and dietary supplement–induced liver injury", source:"Hepatology", year:"2023", url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC9936988/"}, {author:"American Gastroenterological Association.", title:"Diagnosis and management of immune checkpoint inhibitor colitis and hepatitis", source:"gastro.org clinical guidance", url:"https://gastro.org/clinical-guidance/diagnosis-and-management-of-immune-checkpoint-inhibitor-colitis-and-hepatitis/"} ]
     },
     {
-      id:"alf_apap", num:4, cat:"danger", tag:"最重症・緊急",
+      id:"alf_apap", num:4, cat:"danger", tag:"急性経過・意識障害",
       title:"意識障害とPT-INR延長 ― 急性肝不全を疑う", hint:"28歳女性・数日前の市販鎮痛薬大量服用後・傾眠と会話のかみ合わなさで搬送",
-      vignette:"28歳女性。既往に肝疾患はない。4日前、市販の解熱鎮痛薬(アセトアミノフェン含有)を通常量の数倍以上服用したことが、同居家族への後日の聴取で判明した。本日、家族が呼びかけへの反応が鈍く会話がかみ合わないことに気づき救急搬送した。体温36.2℃、血圧104/68mmHg、脈拍98/分。眼球結膜に軽度黄染があり、上肢を伸展させ手関節を背屈保持させると律動的な羽ばたき運動を認める。",
-      labs:[ {k:"ALT",v:"4850",u:"U/L",abn:"high"}, {k:"PT-INR",v:"3.8",u:"",abn:"high"}, {k:"血糖",v:"58",u:"mg/dL",abn:"low"}, {k:"乳酸",v:"5.8",u:"mmol/L",abn:"high"} ],
-      finding:"見当識障害があり、簡単な指示にはかろうじて応じるが意識レベルが変動する。腹水や下腿浮腫、クモ状血管腫など慢性肝疾患を示唆する所見はない。",
+      vignette:"28歳女性。既往に肝疾患はない。4日前、市販の解熱鎮痛薬(アセトアミノフェン含有)を通常量の数倍以上服用したことが、同居家族への後日の聴取で判明した。本日、家族が呼びかけへの反応が鈍く会話がかみ合わないことに気づき救急搬送した。体温36.2℃、血圧104/68mmHg、脈拍98/分。眼球結膜に軽度黄染があり、上肢を伸展させ手関節を背屈保持させると不規則な羽ばたき様の運動を認める。",
+      labs:[ {k:"ALT",v:"4850",u:"U/L",abn:"high"}, {k:"PT-INR",v:"3.8",u:"",abn:"high"}, {k:"血糖",v:"58",u:"mg/dL",abn:"low"}, {k:"乳酸",v:"5.8",u:"mmol/L",abn:"high"}, {k:"Cr",v:"1.9",u:"mg/dL",abn:"high"} ],
+      finding:"見当識障害があり、簡単な指示にはかろうじて応じるが意識レベルが変動する。腹水や下腿浮腫、クモ状血管腫は認めない。",
       prompts:{
         severity:{ label:"この患者の病態を、急性肝不全の定義に照らしてどう評価するか", ph:"脳症の有無、PT-INR、基礎疾患の有無、発症からの期間など…" },
         pattern:{ label:"経過と検査パターンから、原因として何を最も疑うか", ph:"服薬歴、R比、他の急性肝不全の原因との鑑別など…" },
@@ -575,18 +579,18 @@
         action:{ label:"今すぐ行うべき治療と、専門施設への相談・搬送基準は何か", ph:"解毒薬、低血糖・脳浮腫への対応、King's College基準など…" }
       },
       answer:{
-        severity:["<mark>基礎に肝疾患のない患者で、脳症(羽ばたき振戦・意識変容)とPT-INR≥1.5(本例3.8)が発症26週未満で揃っており、急性肝不全(ALF)の定義を満たす</mark>。低血糖・乳酸上昇・腎機能への影響も伴い、多臓器に既に影響が及んでいる<mark>重症例</mark>と判断する","<mark>基礎疾患としての肝硬変がなくALFと判断できる点が、慢性肝疾患の急性増悪であるACLFとの違い</mark>。既存の肝硬変がある患者で同様の病態を見た場合はACLFを考える"],
-        pattern:["<mark>AST・ALTが著明に上昇しビリルビン・PT-INRも上昇する肝細胞障害型で、数日前の大量服薬歴から薬物中毒(アセトアミノフェン)を最も疑う</mark>","<mark>ALF/ACLFの原因は、頻度は高くなくても見逃すと致命的なものを必ず鑑別に挙げる</mark>:アセトアミノフェン中毒、虚血性肝障害(本例はショックの既往なく否定的)、急性ウイルス性肝炎(A型・B型)、自己免疫性肝炎、Budd-Chiari症候群、妊娠関連肝疾患(本例は該当なし)"],
-        workup:["<mark>アセトアミノフェン血中濃度</mark>を測定し、内服からの経過時間と合わせて中毒域かを評価する(Rumack-Matthewノモグラムは内服時刻が明確な単回大量服薬に適用する)","動脈血ガスでpH・乳酸を確認し、<mark>頭部CTで脳浮腫の評価</mark>(高度脳症では必須)を行う","<mark>ウイルス性肝炎マーカー、自己抗体、腹部超音波(門脈・肝静脈の血流評価を含む)</mark>は服薬歴があっても省略せず一通り確認し、他の原因を見逃さない"],
-        action:["<mark>アセトアミノフェンが疑われる、または原因不明の急性肝障害では、内服からの経過時間や血中濃度によらずN-アセチルシステイン(NAC)を速やかに開始</mark>する(肝障害が既に進行している場合も投与のタイミングを問わず開始する)","<mark>低血糖・電解質異常を補正し、高度脳症(Grade III/IV)があれば頭蓋内圧管理と気道確保を検討</mark>する。集中治療管理が必要","<mark>King's Collegeの基準(pH<7.3、またはPT-INR>6.5・Cr>3.4mg/dL・Grade III/IV脳症の3項目すべて)を満たす、あるいは満たしていなくても急速に増悪する場合は、基準充足を待たずに早期に肝臓専門医・移植施設に連絡</mark>する","<mark>PT-INR延長のみでは(活動性出血や侵襲的処置がない限り)新鮮凍結血漿を安易に投与しない</mark>。INRは重症度・移植適応判断の指標であり、不用意なFFP投与はこの指標を覆い隠してしまう"]
+        severity:["<mark>基礎に肝疾患のない患者で、脳症(羽ばたき様運動・意識変容)とPT-INR≥1.5(本例3.8)が発症26週未満で揃っており、急性肝不全(ALF)の定義を満たす</mark>(自己免疫性肝炎やWilson病など、基礎に肝硬変があってもALFとして扱う例外もある)。低血糖・乳酸上昇・Cr上昇も伴い、多臓器に既に影響が及んでいる<mark>重症例</mark>と判断する","<mark>基礎疾患としての肝硬変がなくALFと判断できる点が、慢性肝疾患の急性増悪であるACLFとの違い</mark>。既存の肝硬変がある患者で同様の病態を見た場合はACLFを考える"],
+        pattern:["<mark>AST・ALTが著明に上昇しビリルビン・PT-INRも上昇する肝細胞障害型で、数日前の大量服薬歴から薬物中毒(アセトアミノフェン)を最も疑う</mark>","<mark>ALF/ACLFの原因は、頻度は高くなくても見逃すと致命的なものを必ず鑑別に挙げる</mark>:アセトアミノフェン中毒、虚血性肝障害(本例はショックの既往なく否定的)、急性ウイルス性肝炎(A型・B型)、自己免疫性肝炎、Budd-Chiari症候群、妊娠関連肝疾患(妊娠反応で確認する)"],
+        workup:["<mark>アセトアミノフェン血中濃度</mark>を測定し、内服からの経過時間と合わせて中毒域かを評価する(Rumack-Matthewノモグラムは内服時刻が明確な単回大量服薬に適用する)","動脈血ガスでpH・乳酸を確認し、<mark>頭部CTで脳浮腫の評価</mark>(高度脳症では必須)を行う","<mark>ウイルス性肝炎マーカー、自己抗体、妊娠反応(hCG)、腹部超音波(門脈・肝静脈の血流評価を含む)</mark>は服薬歴があっても省略せず一通り確認し、他の原因を見逃さない"],
+        action:["<mark>アセトアミノフェンが疑われる、または原因不明の急性肝障害では、内服からの経過時間や血中濃度によらずN-アセチルシステイン(NAC)を速やかに開始</mark>する(肝障害が既に進行している場合も投与のタイミングを問わず開始する)","<mark>低血糖・電解質異常を補正し、高度脳症(Grade III/IV)があれば頭蓋内圧管理と気道確保を検討</mark>する。集中治療管理が必要","<mark>King's Collegeの基準(アセトアミノフェン中毒例:pH<7.3、またはPT-INR>6.5・Cr>3.4mg/dL・Grade III/IV脳症の3項目すべて。非アセトアミノフェン例は別基準)</mark>を満たす、あるいは満たしていなくても急速に増悪する場合は、基準充足を待たずに早期に肝臓専門医・移植施設に連絡する","<mark>PT-INR延長のみでは(活動性出血や侵襲的処置がない限り)新鮮凍結血漿を安易に投与しない</mark>。PT-INRは重症度・移植適応判断の指標であり、不用意なFFP投与はこの指標を覆い隠してしまう","循環・意識が安定した段階で、<mark>大量服薬に至った背景(自殺企図の可能性)の評価と精神科連携・安全確保</mark>を行う"]
       },
       rx:["N-アセチルシステイン静注:初回150mg/kgを1時間、次に50mg/kgを4時間、その後100mg/kgを16時間で投与(総量300mg/kg/21時間、いわゆる3バッグ法)。肝障害が既に進行している例では標準プロトコル終了後も肝機能・PT-INRの改善傾向が得られるまで投与を延長することがあり、中毒専門医・中毒110番への相談を検討する","低血糖に対しブドウ糖を投与し、電解質(K・P・Mgなど)を補正する","高度脳症・脳浮腫を疑う場合は頭部挙上、必要に応じて高張食塩水/マンニトールを中毒・集中治療の専門医と検討し、気道保護のための挿管を早めに判断する"],
       pitfall:"<mark>「PT-INRが延長しているから新鮮凍結血漿で補正する」という反射的な対応は避ける</mark>。出血していない限りFFPは不要であり、投与すると重症度・移植適応判断に使うPT-INRの値そのものを消してしまう。また<mark>「AST/ALTが下がってきたから軽快している」と誤解しない</mark>ことも重要で、アセトアミノフェン中毒ではトランスアミナーゼは早期にピークをつけて自然に低下する一方、ビリルビン・PT-INR・脳症は遅れて悪化することがある。",
-      pearl:["急性肝不全(ALF)は<mark>①基礎に肝疾患がない、②脳症、③PT-INR≥1.5、④発症26週未満</mark>という4条件で定義される","<mark>King's College基準はpH<7.3単独、またはPT-INR>6.5+Cr>3.4mg/dL+Grade III/IV脳症の3項目すべて</mark>が予後不良・移植適応の目安だが、基準を満たすのを待たず早期に専門施設へ相談する","アセトアミノフェン中毒はNACが特異的解毒薬であり、<mark>肝障害が既に進行していても中止せず投与する</mark>のが原則","<mark>トランスアミナーゼの改善だけで安心せず、ビリルビン・PT-INR・意識レベルの推移で重症度を追う</mark>"],
+      pearl:["急性肝不全(ALF)は<mark>①基礎に肝疾患がない、②脳症、③PT-INR≥1.5、④発症26週未満</mark>という4条件で定義される","<mark>King's College基準(アセトアミノフェン中毒例)はpH<7.3単独、またはPT-INR>6.5+Cr>3.4mg/dL+Grade III/IV脳症の3項目すべて</mark>が予後不良・移植適応の目安(非アセトアミノフェン例は別基準)だが、基準を満たすのを待たず早期に専門施設へ相談する","アセトアミノフェン中毒はNACが特異的解毒薬であり、<mark>肝障害が既に進行していても中止せず投与する</mark>のが原則","<mark>トランスアミナーゼの改善だけで安心せず、ビリルビン・PT-INR・意識レベルの推移で重症度を追う</mark>"],
       refs:[ {author:"Polson J, Lee WM.", title:"AASLD position paper: The management of acute liver failure", source:"Hepatology 41(5):1179-1197", year:"2005", url:"https://pubmed.ncbi.nlm.nih.gov/15841455/"}, {author:"AASLD.", title:"Defining and Managing Acute Liver Failure", source:"AASLD Liver Fellow Network", url:"https://www.aasld.org/liver-fellow-network/core-series/back-basics/defining-and-managing-acute-liver-failure"}, {title:"N-Acetylcysteine", source:"StatPearls, NCBI Bookshelf", url:"https://www.ncbi.nlm.nih.gov/books/NBK537183/"} ]
     },
     {
-      id:"hbv_reactivation", num:5, cat:"chronic", tag:"ウイルス性・見逃し厳禁",
+      id:"hbv_reactivation", num:5, cat:"chronic", tag:"免疫抑制療法中・ウイルス肝炎",
       title:"免疫抑制療法中に判明したHBV再活性化", hint:"58歳男性・悪性リンパ腫にリツキシマブ併用化学療法中・定期採血でALT上昇",
       vignette:"58歳男性。悪性リンパ腫に対しR-CHOP療法(リツキシマブ含む)を4コース施行中。治療開始前のスクリーニングでHBs抗原陰性、HBc抗体陽性、HBs抗体陽性(既往感染)であることが確認されていた。核酸アナログの予防投与は開始されていない。今回の定期採血でALT上昇を認め、自覚症状は特にない。前回(4週間前)の定期採血ではALTは正常で、HBV-DNAは検出感度未満だった。",
       labs:[ {k:"ALT",v:"156",u:"U/L",abn:"high"}, {k:"AST",v:"98",u:"U/L",abn:"high"}, {k:"総ビリルビン",v:"1.0",u:"mg/dL",abn:"normal"}, {k:"HBV-DNA",v:"2.8",u:"log IU/mL",abn:"high"} ],
@@ -600,36 +604,36 @@
       answer:{
         severity:["現時点でPT-INR延長やビリルビン上昇、脳症所見はなく<mark>劇症化には至っていない</mark>が、<mark>HBV再活性化による肝炎は無治療のまま進行すると急性肝不全に至りうる</mark>ため、緊急性の高い所見として扱う"],
         pattern:["<mark>4週間前は検出感度未満だったHBV-DNAが今回陽性化し、同時にALTが上昇</mark>している。これは典型的な<mark>既往感染(HBs抗原陰性・HBc抗体陽性)からのHBV再活性化</mark>のパターンで、リツキシマブ使用がその主要な誘因と考えられる"],
-        workup:["<mark>HBV-DNA定量の再検・推移</mark>を確認する(判定は原則2回以上の陽性確認が望ましいが、既に肝炎所見を伴う本例では治療開始を待つ必要はない)","PT-INR・アルブミン・ビリルビンで<mark>肝予備能・重症化の兆候</mark>を評価する","A型・C型肝炎など他のウイルス性肝炎、薬剤性肝障害の可能性も念のため除外する"],
-        action:["<mark>HBV-DNAが陽性化した時点(ALT上昇を待たず)で核酸アナログ治療を開始するのが原則</mark>であり、既にALT上昇も伴う本例では直ちにエンテカビルなどの核酸アナログを開始する","<mark>化学療法の継続可否は、肝炎の重症度(ビリルビン・PT-INR)を見ながら血液内科・肝臓内科で協議</mark>する。核酸アナログ開始により多くの場合は化学療法を中断せず継続できる","<mark>今後は肝臓専門医と連携し、化学療法終了後も長期にわたりHBV-DNAのモニタリングを継続</mark>する(リツキシマブ使用例は高リスクとして特に長めの経過観察が必要)"]
+        workup:["<mark>HBV-DNA定量の再検・推移</mark>を確認する(陽性化の判定はHBV-DNA 20 IU/mL[1.3 Log IU/mL]以上を原則2回以上の測定で確認するが、既に肝炎所見を伴う本例では治療開始を待つ必要はない)","PT-INR・アルブミン・ビリルビンで<mark>肝予備能・重症化の兆候</mark>を評価する","A型・C型肝炎など他のウイルス性肝炎、薬剤性肝障害の可能性も念のため除外する"],
+        action:["<mark>HBV-DNAが20 IU/mL(1.3 Log IU/mL)以上に陽性化した時点(ALT上昇を待たず)で核酸アナログ治療を開始するのが原則</mark>であり、既にALT上昇も伴う本例では直ちにエンテカビルなどの核酸アナログを開始する","<mark>化学療法の継続可否は、肝炎の重症度(ビリルビン・PT-INR)を見ながら血液内科・肝臓内科で協議</mark>する。核酸アナログ開始により多くの場合は化学療法を中断せず継続できる","<mark>今後は肝臓専門医と連携し、化学療法終了後も長期にわたりHBV-DNAのモニタリングを継続</mark>する(リツキシマブ使用例は高リスクとして特に長めの経過観察が必要)"]
       },
       rx:["エンテカビル0.5mg/日(腎機能により減量)を速やかに開始する。テノホビル製剤も選択肢となる","治療開始後はHBV-DNA・ALT・PT-INR・ビリルビンをこまめにフォローし、悪化があれば肝臓専門医と入院管理を検討する","核酸アナログは<mark>化学療法終了後も肝臓専門医の判断で一定期間(通常は年単位)継続</mark>し、自己判断で中止しない"],
       pitfall:"<mark>「HBs抗原陰性だから今回のHBV再活性化スクリーニングは終わり」と考え、既往感染(HBc抗体陽性/HBs抗体陽性)例のHBV-DNAモニタリングを省略する</mark>のは重大な見落とし。既往感染からの再活性化はHBs抗原陽性例と同様に重篤化しうる。また<mark>「ALT正常だから大丈夫」と経過観察を続けている間にHBV-DNAだけが先行して陽性化していることがあり、ALT上昇後に気づくのでは治療開始が遅れる</mark>。",
-      pearl:["<mark>免疫抑制・化学療法を開始する前は、原疾患によらずHBs抗原・HBc抗体・HBs抗体のスクリーニングを行う</mark>のが原則","HBs抗原陽性例は治療開始前から核酸アナログを予防投与し、<mark>既往感染(HBc抗体陽性かつHBs抗原陰性)例は治療中・終了後にHBV-DNAを定期的にモニタリングし、陽性化した時点で核酸アナログを開始</mark>する","<mark>リツキシマブ・オビヌツズマブなど抗CD20抗体やフルダラビン、造血幹細胞移植は再活性化の高リスク治療</mark>であり、より頻回・長期のモニタリングを要する","<mark>HBV-DNA陽転化は肝炎発症に先行することが多い</mark>ため、ALT上昇を待たずDNA陽性化の時点で核酸アナログを開始することで重症化を防げる"],
+      pearl:["<mark>免疫抑制・化学療法を開始する前は、原疾患によらずHBs抗原・HBc抗体・HBs抗体のスクリーニングを行う</mark>のが原則","HBs抗原陽性例は治療開始前から核酸アナログを予防投与し、<mark>既往感染(HBc抗体陽性かつHBs抗原陰性)例は治療中・終了後にHBV-DNAを定期的にモニタリングし、20 IU/mL(1.3 Log IU/mL)以上に陽性化した時点で核酸アナログを開始</mark>する","<mark>リツキシマブ・オビヌツズマブなど抗CD20抗体の使用や造血幹細胞移植は再活性化の高リスク治療</mark>であり、より頻回・長期のモニタリングを要する(フルダラビンなど他の強力な免疫抑制薬は、再活性化リスクが明確に確立していなくても個別に慎重な評価を要する)","<mark>HBV-DNA陽転化は肝炎発症に先行することが多い</mark>ため、ALT上昇を待たずDNA陽性化の時点で核酸アナログを開始することで重症化を防げる"],
       refs:[ {author:"日本肝臓学会.", title:"B型肝炎治療ガイドライン", source:"jsh.or.jp", url:"https://www.jsh.or.jp/medical/guidelines/jsh_guidlines/hepatitis_b.html"}, {author:"日本肝臓学会 肝炎診療ガイドライン作成委員会.", title:"免疫抑制・化学療法により発症するB型肝炎対策ガイドライン", source:"jsh.or.jp", url:"https://www.jsh.or.jp/lib/files/medical/guidelines/jsh_guidlines/B_document-3_20200716.pdf"} ]
     },
     {
       id:"cirrhosis_decompensation", num:6, cat:"chronic", tag:"肝硬変合併症",
       title:"肝硬変患者の意識障害と腹水増悪 ― 誘因検索とACLF", hint:"70歳男性・C型肝炎後肝硬変で通院中・数日前からの見当識障害と腹部膨満",
-      vignette:"70歳男性。C型肝炎による代償性肝硬変で通院中(直近の腹部超音波で肝表面凹凸不整・脾腫を指摘されている)。3日前から日中の傾眠傾向と、家族から見て会話のつじつまが合わないことが増え、同時に腹部膨満が急速に進行し受診した。体温37.6℃、血圧106/64mmHg。腹部は膨隆し波動を触れ、圧痛は軽度。上肢を伸展させ手関節を背屈保持させると軽度の羽ばたき運動を認める。直近の内服にオピオイドや新規鎮静薬の追加はなく、黒色便やヘモグロビン低下など消化管出血を示唆する所見もない。",
+      vignette:"70歳男性。C型肝炎による代償性肝硬変で通院中(直近の腹部超音波で肝表面凹凸不整・脾腫を指摘されている)。3日前から日中の傾眠傾向と、家族から見て会話のつじつまが合わないことが増え、同時に腹部膨満が急速に進行し受診した。体温37.6℃、血圧106/64mmHg。腹部は膨隆し波動を触れ、圧痛は軽度。上肢を伸展させ手関節を背屈保持させると軽度の羽ばたき運動を認める。",
       labs:[ {k:"総ビリルビン",v:"3.4",u:"mg/dL",abn:"high"}, {k:"アルブミン",v:"2.6",u:"g/dL",abn:"low"}, {k:"PT-INR",v:"1.9",u:"",abn:"high"}, {k:"Na",v:"131",u:"mEq/L",abn:"low"} ],
       finding:"腹水穿刺:外観やや混濁、多形核白血球(PMN)数312/mm³。血液・腹水培養を提出済み。",
       prompts:{
         severity:{ label:"この患者の病態を、既存の肝硬変を踏まえてどう評価するか", ph:"ACLFの考え方、Child-Pugh/MELDの計算など…" },
         pattern:{ label:"意識障害の原因として、まず何を除外すべきか", ph:"肝性脳症の誘因、アンモニア値の位置づけなど…" },
         workup:{ label:"意識障害・腹水増悪の原因を特定するために、どの検査を行うか", ph:"腹水検査、電解質、画像、その他の誘因検索など…" },
-        action:{ label:"誘因への対応と肝性脳症そのものの治療、今後のフォローをどう組み立てるか", ph:"SBPの治療、脳症治療薬、Child-Pugh/MELDの使い分けなど…" }
+        action:{ label:"誘因への対応と肝性脳症そのものの治療、今後のフォローをどう組み立てるか", ph:"SBPの治療、脳症治療薬、退院後のサーベイランスなど…" }
       },
       answer:{
         severity:["<mark>既に肝硬変と分かっている患者に急性の意識障害・臓器障害が加わった状態であり、急性肝不全(ALF)ではなく、慢性肝疾患の急性増悪であるACLF(acute-on-chronic liver failure)の枠組みで考える</mark>","<mark>Child-Pugh点数(ビリルビン・アルブミン・PT-INR・腹水・脳症の5項目、5〜15点でA/B/Cに分類)</mark>を計算すると、本例は概ねC(重症)相当となる。<mark>MELDスコア(ビリルビン・PT-INR・クレアチニンから算出)は主に移植優先順位判定に用いる</mark>という使い分けを意識する"],
-        pattern:["<mark>意識障害を見たらまず肝性脳症の「誘因」を探す</mark>。感染(特発性細菌性腹膜炎など)、消化管出血、脱水・利尿薬の過剰使用、電解質異常(低Na血症)、便秘、鎮静薬の使用などが代表的な誘因で、<mark>誘因を治療しないまま脳症治療薬だけで様子を見ても改善しない</mark>","<mark>アンモニア値は診断の補助にはなるが、単独では肝性脳症の診断も除外もできない</mark>(正常でも脳症は否定できず、高値でも他の原因による意識障害はありうる)。臨床像(羽ばたき振戦、見当識障害の程度)で判断する"],
+        pattern:["<mark>肝性脳症と決めつける前に、低血糖・頭蓋内病変(凝固異常のある肝硬変患者では慢性硬膜下血腫などのリスクも高い)・アルコール離脱/Wernicke脳症・薬剤性(オピオイド・鎮静薬)など、他の意識障害の原因も除外</mark>する","そのうえで<mark>肝性脳症の「誘因」を探す</mark>。感染(特発性細菌性腹膜炎など)、消化管出血、脱水・利尿薬の過剰使用、電解質異常(低Na血症)、便秘などが代表的な誘因で、<mark>誘因を治療しないまま脳症治療薬だけで様子を見ても改善しない</mark>","<mark>アンモニア値は診断の補助にはなるが、単独では肝性脳症の診断も除外もできない</mark>(正常でも脳症は否定できず、高値でも他の原因による意識障害はありうる)。臨床像(羽ばたき振戦、見当識障害の程度)で判断する"],
         workup:["<mark>腹水穿刺は必須</mark>で、<mark>多形核白血球(PMN)数250/mm³以上は特発性細菌性腹膜炎(SBP)</mark>と診断する。本例はPMN312/mm³でSBPに該当する","電解質(Na・K)、腎機能、血糖、感染源(尿・胸部)のスクリーニングを行い、<mark>消化管出血の有無(直腸診・Hb推移)</mark>も確認する","腹部超音波/CTで肝硬変の評価に加え、新規の腫瘤性病変(肝細胞癌)がないかも確認する機会とする"],
         action:["<mark>SBPに対し、腹水培養提出後速やかに第三世代セファロスポリン(セフォタキシムまたはセフトリアキソン)を開始</mark>し、<mark>腎機能悪化(肝腎症候群)予防のためアルブミン投与</mark>を併用する","<mark>肝性脳症そのものにはラクツロースなどの合成二糖類±リファキシミンを開始</mark>するが、<mark>誘因(本例ではSBP)の治療を並行して行わなければ改善しない</mark>","NSAIDsや過度な利尿薬・鎮静薬は<mark>腎機能悪化や脳症増悪のリスクとなるため中止・見直し</mark>を行う","<mark>安定後は肝細胞癌サーベイランス(超音波±AFP)や静脈瘤の評価が継続されているかを確認</mark>し、専門医フォローにつなげる"]
       },
       rx:["セフォタキシム2gを8時間ごと、またはセフトリアキソン2g/日を静注する。SBPの既往がある例では再発予防として長期の抗菌薬投与が検討される","アルブミン投与:診断時1.5g/kg、第3病日に1.0g/kgを目安に投与し、肝腎症候群への進展を予防する(特にCr上昇例で有用性が示されている)","ラクツロースを1日2〜3回の軟便が得られるよう調整して投与し、経口摂取困難な場合は注腸も検討する。誘因への対応と並行して行う"],
       pitfall:"<mark>「肝硬変患者の意識障害=肝性脳症」と決めつけ、感染(SBP)や消化管出血などの誘因検索を省略してラクツロースだけで様子を見る</mark>のは典型的な誤り。誘因が未治療のままでは脳症は改善しない。逆に<mark>アンモニア値が正常だからといって肝性脳症を否定してしまう</mark>のも誤り。",
       pearl:["肝硬変患者に新たな臓器障害が加わった状態は<mark>ACLF</mark>として捉え、誘因(感染・出血・脱水など)の検索と是正を治療の中心に据える","<mark>Child-Pughは日常臨床での重症度・治療方針の目安、MELDは主に移植優先順位判定</mark>という使い分けを意識する","<mark>SBPの診断基準は腹水PMN数250/mm³以上</mark>であり、症状に乏しくても腹水穿刺を行う閾値を低く持つ","<mark>肝性脳症は誘因治療とセットで行う</mark>。アンモニア値は補助的指標にとどめ、単独診断・除外の根拠にしない","安定した外来フォローでは<mark>肝細胞癌サーベイランス</mark>など合併症スクリーニングを定期的に継続する"],
-      refs:[ {title:"Recognition and Management of Spontaneous Bacterial Peritonitis", source:"University of Washington HCV/Liver Disease Online Curriculum", url:"https://www.hepatitisc.uw.edu/pdf/management-cirrhosis-related-complications/spontaneous-bacterial-peritonitis-recognition-management/core-concept/all.html"}, {title:"Hepatorenal syndrome: Updates", source:"PMC", url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC10473355/"}, {title:"Use Of The Child Pugh Score In Liver Disease", source:"StatPearls, NCBI Bookshelf", url:"https://www.ncbi.nlm.nih.gov/books/NBK542308/"} ]
+      refs:[ {title:"Recognition and Management of Spontaneous Bacterial Peritonitis", source:"University of Washington HCV/Liver Disease Online Curriculum", url:"https://www.hepatitisc.uw.edu/pdf/management-cirrhosis-related-complications/spontaneous-bacterial-peritonitis-recognition-management/core-concept/all.html"}, {author:"Sort P, Navasa M, Arroyo V, et al.", title:"Effect of intravenous albumin on renal impairment and mortality in patients with cirrhosis and spontaneous bacterial peritonitis（アルブミン1.5→1.0g/kg投与法の原著）", source:"New England Journal of Medicine 341:403-409", year:"1999", url:"https://pubmed.ncbi.nlm.nih.gov/10432325/"}, {title:"Use Of The Child Pugh Score In Liver Disease", source:"StatPearls, NCBI Bookshelf", url:"https://www.ncbi.nlm.nih.gov/books/NBK542308/"} ]
     }
   ];
 
@@ -672,7 +676,7 @@
         {t:"③黄疸は抱合型/非抱合型で鑑別する", d:"直接ビリルビン優位なら肝細胞障害・胆汁うっ滞、間接ビリルビン優位なら溶血や体質性黄疸(Gilbert症候群など)を考える。"},
         {t:"④一回の検査値だけでなく経時変化を見る", d:"急峻な悪化は危険信号、緩徐な上昇は生活習慣・慢性疾患を疑う。"}
       ],
-      note:"PT-INR・アルブミン・ビリルビンは肝の「実質的な機能」を反映し、肝細胞障害の程度そのものを示すAST/ALTとは意味が異なる。ALTが高くても凝固能・アルブミンが保たれていれば重症度は高くないと判断できる。",
+      note:"PT-INR・アルブミン・ビリルビンは肝の「実質的な機能」を反映し、肝細胞障害の程度そのものを示すAST/ALTとは意味が異なる。ALTが高くても凝固能・アルブミンが保たれていればその時点の肝予備能は保たれていると判断できるが、トランスアミナーゼの改善だけで安心せず、経時的にPT-INR・ビリルビンを再評価することが前提となる(遅れて悪化する病態もある)。",
       refs:["Sterling RK, et al. Hepatology 2006(FIB-4)","Fontana RJ, et al. AASLD DILI Practice Guidance 2023"]
     },
     {
@@ -694,7 +698,8 @@
         {t:"①線維化を非侵襲的に評価する", d:"FIB-4 indexは年齢・AST・ALT・血小板から計算でき、<mark>年齢で異なるカットオフ(65歳未満は<1.3/>2.67、65歳以上は<2.0/>2.67)</mark>を用いる。indeterminateならエラストグラフィなど追加評価を検討する。"},
         {t:"②代償性/非代償性を区別する", d:"腹水・肝性脳症・静脈瘤出血のいずれかが出現すれば非代償性と判断する。"},
         {t:"③重症度はChild-PughとMELDを使い分ける", d:"Child-Pughはビリルビン・アルブミン・PT-INR・腹水・脳症の5項目(5〜15点、A/B/C分類)で治療方針・予後の大まかな目安に、MELDはビリルビン・PT-INR・クレアチニンから計算し主に移植優先順位判定に用いる。"},
-        {t:"④肝硬変合併症を定期的に確認する", d:"腹水/特発性細菌性腹膜炎、肝性脳症、静脈瘤出血、肝腎症候群、肝細胞癌サーベイランス。"}
+        {t:"④肝硬変合併症を定期的に確認する", d:"腹水/特発性細菌性腹膜炎、肝性脳症、静脈瘤出血、肝腎症候群、肝細胞癌サーベイランス。"},
+        {t:"⑤免疫抑制・化学療法の前にHBV再活性化リスクを評価する", d:"原疾患によらず<mark>HBs抗原・HBc抗体・HBs抗体をスクリーニング</mark>する。HBs抗原陽性例は治療開始前から核酸アナログを予防投与し、既往感染(HBc抗体陽性かつHBs抗原陰性)例は治療中・終了後にHBV-DNAを定期的にモニタリングし、<mark>20 IU/mL(1.3 Log IU/mL)以上に陽性化した時点で核酸アナログを開始</mark>する。"}
       ],
       note:"肝性脳症は誘因(感染・出血・脱水・便秘・電解質異常・鎮静薬)を必ず探して治療する。アンモニア値は診断の補助にはなるが、単独では診断も除外もできない。",
       refs:["Child-Pugh/MELD(StatPearls)","日本肝臓学会 B型肝炎治療ガイドライン"]
@@ -758,6 +763,7 @@
   var app = document.getElementById("app");
 
   function escapeHtml(s){
+    s = (s===null || s===undefined) ? "" : String(s);
     return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
   }
 
@@ -838,7 +844,7 @@
     }
     html += '</div>';
 
-    html += '<button class="summary-cta" data-action="goto-approach"><span><span class="t">肝機能障害の初動まとめ</span><span class="s">パターン認識→重症度評価→原因鑑別→初期対応</span></span><span class="arrow">›</span></button>';
+    html += '<button class="summary-cta" data-action="goto-approach"><span><span class="t">肝機能障害の初動まとめ</span><span class="s">重症度評価→パターン認識→原因鑑別→初期対応</span></span><span class="arrow">›</span></button>';
 
     if(state.reviewOnly){
       html += '<div class="section-head"><span class="dot" style="background:var(--warn)"></span><h2>復習対象の症例</h2><span class="count">'+rev.length+'件</span></div>';
@@ -894,9 +900,10 @@
 
     html += '<div class="selfcheck-card" id="prompts">';
     getPrompts(c).forEach(function(p){
+      var fieldId = "sc-"+c.id+"-"+p.key;
       html += '<div class="sc-row">';
-      html += '<label><span class="n">'+p.num+'</span>'+p.label+'</label>';
-      html += '<textarea data-field="'+p.key+'" placeholder="'+p.ph+'">'+ (drafts[p.key] ? escapeHtml(drafts[p.key]) : "") +'</textarea>';
+      html += '<label for="'+fieldId+'"><span class="n">'+p.num+'</span>'+p.label+'</label>';
+      html += '<textarea id="'+fieldId+'" data-field="'+p.key+'" placeholder="'+escapeHtml(p.ph)+'">'+ (drafts[p.key] ? escapeHtml(drafts[p.key]) : "") +'</textarea>';
       html += '</div>';
     });
     html += '</div>';
@@ -965,7 +972,7 @@
     if(!c.rx || !c.rx.length) return "";
     var items = c.rx.map(function(t){ return '<li>'+t+'</li>'; }).join("");
     return '<div class="rx-block"><div class="rx-label"><span class="rx-mark">℞</span>具体的な治療例</div>'+
-      '<p class="rx-caveat">年齢・腎機能・肝予備能・体重により個別調整が必要な目安です。実際の投与量・タイミングは必ず添付文書・自施設のプロトコル・指導医で確認してください。</p>'+
+      '<p class="rx-caveat">年齢・腎機能・肝予備能・体重により個別調整が必要な目安です。実際の投与量・タイミングは必ず添付文書・自施設のプロトコル・指導医に確認してください。</p>'+
       '<ul>'+items+'</ul></div>';
   }
 
@@ -1023,7 +1030,7 @@
 
     html += '<div class="global-note"><div class="gl-label">国内外のガイドラインとの違いに少しだけ触れると</div><p>R比によるパターン分類やTG18の胆管炎診断・重症度基準、King\'s College基準などは国際的にほぼ共通の枠組みとして使われている。一方でHBV再活性化対策は、日本肝臓学会のガイドラインが既往感染例に対して<mark>HBV-DNAモニタリングを行い陽性化した時点で核酸アナログを開始する</mark>という運用を軸にしているのに対し、欧米のガイドラインではリスクの高い治療(抗CD20抗体など)では最初から予防投与を推奨する立場を取ることもあり、リスク層別化の考え方に多少の違いがある。いずれも「既往感染だから安心」とはならない点は共通している。</p></div>';
 
-    html += '<div class="approach-foot">迷ったら、パターン(R比)・重症度(意識・PT-INR)・誘因・専門医紹介基準の4つに立ち返る。</div>';
+    html += '<div class="approach-foot">迷ったら、重症度(意識・PT-INR)・パターン(R比)・誘因・専門医紹介基準の4つに立ち返る。</div>';
     return html;
   }
 
@@ -1113,7 +1120,9 @@
           var c0 = caseById(state.caseId);
           if(!c0) return;
           pendingStatus[state.caseId] = kind;
-          state.progress[state.caseId] = kind;
+          var onDiskProgress = loadProgress();
+          onDiskProgress[state.caseId] = kind;
+          state.progress = onDiskProgress;
           lastSaveFailed = !saveProgress(state.progress);
           render();
         } else if(action==="next-case"){
@@ -1142,6 +1151,11 @@
 
   var draftSaveTimer = null;
   function flushDraftSave(){
+    var onDisk = loadDrafts();
+    for(var caseId in draftCache){
+      if(Object.prototype.hasOwnProperty.call(draftCache, caseId)) onDisk[caseId] = draftCache[caseId];
+    }
+    draftCache = onDisk;
     var ok = saveDrafts(draftCache);
     var warnEl = document.getElementById("draftSaveWarning");
     if(warnEl){ warnEl.hidden = ok; }
