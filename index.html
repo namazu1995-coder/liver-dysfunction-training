@@ -521,7 +521,7 @@
       refs:[ {author:"Rinella ME, Lazarus JV, Ratziu V, et al.", title:"A multisociety Delphi consensus statement on new fatty liver disease nomenclature（新命名法の解説）", source:"AASLD", year:"2023", url:"https://www.aasld.org/new-masld-nomenclature"}, {author:"Sterling RK, Lissen E, Clumeck N, et al.", title:"Development of a simple noninvasive index to predict significant fibrosis in patients with HIV/HCV coinfection（FIB-4の計算式の原著。年齢別カットオフは後続の検証研究による）", source:"Hepatology 43(6):1317-1325", year:"2006", url:"https://pubmed.ncbi.nlm.nih.gov/16729309/"}, {title:"Spare Me the Jab: Noninvasive Assessment of Patients with MASLD（年齢別FIB-4カットオフの解説）", source:"AASLD Liver Fellow Network", url:"https://www.aasld.org/liver-fellow-network/core-series/clinical-pearls/spare-me-jab-noninvasive-assessment-patients-masld"}, {author:"日本肝臓学会.", title:"C型肝炎治療ガイドライン（ウイルスマーカーの選択・解釈）", source:"jsh.or.jp", url:"https://www.jsh.or.jp/medical/guidelines/jsh_guidlines/hepatitis_c.html"} ]
     },
     {
-      id:"fever_jaundice_cholangitis", num:2, cat:"danger", tag:"急性期・緊急",
+      id:"fever_jaundice_cholangitis", num:2, cat:"danger", tag:"急性期・胆道感染",
       title:"発熱と黄疸 ― 胆道系危険信号の初期評価", hint:"68歳女性・悪寒戦慄を伴う発熱と黄疸で救急搬送・総胆管結石の既往",
       vignette:"68歳女性。3年前に総胆管結石の既往がある。昨夜からの悪寒戦慄を伴う発熱と心窩部〜右季肋部の持続する痛みで救急搬送された。体温39.4℃、脈拍112/分、血圧98/62mmHg。皮膚・眼球結膜に黄染を認める。右季肋部に圧痛があるが、深呼吸を止めさせるほど著明な圧痛は明らかではない。輸液を開始したが、収縮期血圧は90mmHg台前半で推移している。",
       labs:[ {k:"WBC",v:"16800",u:"/μL",abn:"high"}, {k:"CRP",v:"18.2",u:"mg/dL",abn:"high"}, {k:"総ビリルビン",v:"4.8",u:"mg/dL",abn:"high"}, {k:"ALP",v:"512",u:"U/L",abn:"high"}, {k:"AST",v:"78",u:"U/L",abn:"high"}, {k:"ALT",v:"96",u:"U/L",abn:"high"} ],
@@ -720,12 +720,33 @@
   }
   function loadDrafts(){
     try{
-      var d = JSON.parse(localStorage.getItem(DRAFT_KEY));
-      return (d && typeof d === "object" && !Array.isArray(d)) ? d : {};
+      var raw = JSON.parse(localStorage.getItem(DRAFT_KEY));
+      if(!raw || typeof raw !== "object" || Array.isArray(raw)) return {};
+      var out = {};
+      CASES.forEach(function(c){
+        var entry = raw[c.id];
+        if(!entry || typeof entry !== "object" || Array.isArray(entry)) return;
+        var clean = {};
+        Object.keys(entry).forEach(function(k){
+          if(typeof entry[k] === "string") clean[k] = entry[k];
+        });
+        if(Object.keys(clean).length) out[c.id] = clean;
+      });
+      return out;
     }catch(e){ return {}; }
   }
-  function saveDrafts(d){
-    try{ localStorage.setItem(DRAFT_KEY, JSON.stringify(d)); return true; }catch(e){ return false; }
+  // Read-merge-write, scoped to the single case that changed: merging the whole
+  // in-memory draftCache over disk (or skipping the disk re-read entirely, as the
+  // pagehide/visibilitychange handlers used to) can clobber a concurrent tab's newer
+  // write to an unrelated case.
+  function saveDrafts(caseId, fields){
+    try{
+      var current = loadDrafts();
+      current[caseId] = fields;
+      localStorage.setItem(DRAFT_KEY, JSON.stringify(current));
+      draftCache = current;
+      return true;
+    }catch(e){ return false; }
   }
 
   (function validateCasesData(){
@@ -1108,11 +1129,9 @@
           go("approach");
         } else if(action==="reveal"){
           lastSaveFailed = false;
-          collectDraft(state.caseId, false);
-          if(draftSaveTimer){ clearTimeout(draftSaveTimer); draftSaveTimer = null; }
+          collectDraft(state.caseId, true);
           revealCache[state.caseId] = true;
           render();
-          flushDraftSave();
           var wrap = app.querySelector(".answer-wrap");
           if(wrap) wrap.scrollIntoView({behavior:"smooth", block:"start"});
         } else if(action==="assess"){
@@ -1150,16 +1169,6 @@
   }
 
   var draftSaveTimer = null;
-  function flushDraftSave(){
-    var onDisk = loadDrafts();
-    for(var caseId in draftCache){
-      if(Object.prototype.hasOwnProperty.call(draftCache, caseId)) onDisk[caseId] = draftCache[caseId];
-    }
-    draftCache = onDisk;
-    var ok = saveDrafts(draftCache);
-    var warnEl = document.getElementById("draftSaveWarning");
-    if(warnEl){ warnEl.hidden = ok; }
-  }
   function collectDraft(caseId, flushNow){
     var d = {};
     app.querySelectorAll("textarea[data-field]").forEach(function(ta){
@@ -1167,15 +1176,25 @@
     });
     draftCache[caseId] = d;
     if(draftSaveTimer){ clearTimeout(draftSaveTimer); draftSaveTimer = null; }
+    function flush(){
+      var ok = saveDrafts(caseId, d);
+      var warnEl = document.getElementById("draftSaveWarning");
+      if(warnEl){ warnEl.hidden = ok; }
+    }
     if(flushNow){
-      flushDraftSave();
+      flush();
     } else {
-      draftSaveTimer = setTimeout(flushDraftSave, 400);
+      draftSaveTimer = setTimeout(flush, 400);
     }
   }
-  window.addEventListener("pagehide", function(){ saveDrafts(draftCache); });
+  function flushCurrentDraft(){
+    if(state.view === "case" && state.caseId && draftCache[state.caseId]){
+      saveDrafts(state.caseId, draftCache[state.caseId]);
+    }
+  }
+  window.addEventListener("pagehide", flushCurrentDraft);
   document.addEventListener("visibilitychange", function(){
-    if(document.visibilityState === "hidden") saveDrafts(draftCache);
+    if(document.visibilityState === "hidden") flushCurrentDraft();
   });
 
   render();
