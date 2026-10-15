@@ -202,9 +202,6 @@
 
   .section-head{ display:flex; align-items:baseline; gap:8px; margin:26px 0 12px; }
   .section-head .dot{width:9px;height:9px;border-radius:50%;flex:none;}
-  .section-head.pattern .dot{background:var(--cat-pattern);}
-  .section-head.danger .dot{background:var(--cat-danger);}
-  .section-head.chronic .dot{background:var(--cat-chronic);}
   .section-head h2{font-size:15px; font-weight:700; color:var(--ink);}
   .section-head .count{font-size:12px; color:var(--ink-faint); font-weight:400;}
 
@@ -221,10 +218,8 @@
     flex:none; width:38px; height:38px; border-radius:50%;
     display:flex; align-items:center; justify-content:center;
     font-family:"Zen Kaku Gothic New",sans-serif; font-weight:900; font-size:13.5px;
+    background:var(--primary-tint); color:var(--primary);
   }
-  .ion-badge.pattern{ background:var(--cat-pattern-tint); color:var(--cat-pattern); }
-  .ion-badge.danger{ background:var(--cat-danger-tint); color:var(--cat-danger); }
-  .ion-badge.chronic{ background:var(--cat-chronic-tint); color:var(--cat-chronic); }
   .case-body{flex:1; min-width:0; display:flex; flex-direction:column; gap:3px;}
   .case-body .hint{
     font-size:14px; font-weight:600; color:var(--ink); line-height:1.4;
@@ -244,7 +239,6 @@
   /* ---------- CASE VIEW ---------- */
   .case-hero{ padding:22px 0 4px; }
   .case-hero .tag{ font-size:12px; font-weight:700; letter-spacing:.08em; }
-  .case-hero .tag.pattern{ color:var(--cat-pattern); } .case-hero .tag.danger{ color:var(--cat-danger); } .case-hero .tag.chronic{ color:var(--cat-chronic); }
   .case-hero h1{ font-size:21px; font-weight:900; margin-top:8px; }
 
   .vignette{
@@ -493,11 +487,10 @@
   "use strict";
 
   var CAT_LABEL = { pattern:"肝機能障害のパターン認識と鑑別の基本", danger:"見逃してはいけない急性・重症肝障害", chronic:"慢性肝疾患とウイルス肝炎の特殊病態" };
-  var CAT_BADGE = { pattern:"型", danger:"急", chronic:"慢" };
 
   var CASES = [
     {
-      id:"checkup_alt", num:1, cat:"pattern", tag:"基本・パターン認識",
+      id:"checkup_alt", num:1, cat:"pattern", tag:"健診異常",
       title:"健診で指摘されたALT上昇 ― パターン認識とFIB-4の基本", hint:"45歳男性・職場健診でAST/ALT上昇を指摘され受診・自覚症状なし",
       vignette:"45歳男性。会社の定期健診で肝機能異常を指摘され受診した。自覚症状はなく、体重は増加傾向。健診結果を持参しており、2年前の健診でもALTはやや高値だったという。飲酒はビール(アルコール度数5%)を毎日1000mL程度、休肝日はほとんどない。市販薬やサプリメントの常用はない。",
       labs:[ {k:"AST",v:"138",u:"U/L",abn:"high"}, {k:"ALT",v:"182",u:"U/L",abn:"high"}, {k:"ALP",v:"88",u:"U/L",abn:"normal"}, {k:"血小板",v:"24.8",u:"万/μL",abn:"normal"} ],
@@ -544,27 +537,27 @@
       refs:[ {author:"Kiriyama S, Kozaka K, Takada T, et al.", title:"Tokyo Guidelines 2018: diagnostic criteria and severity grading of acute cholangitis", source:"J Hepatobiliary Pancreat Sci 25(1):17-30", year:"2018", url:"https://pubmed.ncbi.nlm.nih.gov/29032610/"}, {author:"日本肝胆膵外科学会.", title:"Tokyo Guidelines 2018（TG18）", source:"jshbps.jp", url:"https://www.jshbps.jp/modules/en/index.php?content_id=47"} ]
     },
     {
-      id:"ici_hepatitis", num:3, cat:"danger", tag:"薬剤性・免疫関連",
-      title:"免疫チェックポイント阻害薬治療中の肝障害", hint:"62歳男性・進行肺癌にニボルマブ投与中・倦怠感と肝機能悪化",
-      vignette:"62歳男性。進行非小細胞肺癌に対しニボルマブ単剤療法を8週間前から4回投与されている。投与開始前のスクリーニングでHBs抗原・HCV抗体は陰性だった。1週間前からの倦怠感と食欲低下を主訴に外来を受診した。体温36.8℃、皮疹や関節痛はない。腹部に圧痛はなく、肝腫大は触知しない。",
-      labs:[ {k:"AST",v:"245",u:"U/L",abn:"high"}, {k:"ALT",v:"410",u:"U/L",abn:"high"}, {k:"ALP",v:"92",u:"U/L",abn:"normal"}, {k:"総ビリルビン",v:"0.9",u:"mg/dL",abn:"normal"}, {k:"PT-INR",v:"1.0",u:"",abn:"normal"} ],
-      finding:"腹部超音波:肝腫大なし、腹水なし、胆管拡張を認めない。",
+      id:"hbv_reactivation", num:3, cat:"chronic", tag:"免疫抑制療法中・ウイルス肝炎",
+      title:"免疫抑制療法中に判明したHBV再活性化", hint:"58歳男性・悪性リンパ腫にリツキシマブ併用化学療法中・定期採血でALT上昇",
+      vignette:"58歳男性。悪性リンパ腫に対しR-CHOP療法(リツキシマブ含む)を4コース施行中。治療開始前のスクリーニングでHBs抗原陰性、HBc抗体陽性、HBs抗体陽性(既往感染)であることが確認されていた。核酸アナログの予防投与は開始されていない。今回の定期採血でALT上昇を認め、自覚症状は特にない。前回(4週間前)の定期採血ではALTは正常で、HBV-DNAは検出感度未満だった。",
+      labs:[ {k:"ALT",v:"156",u:"U/L",abn:"high"}, {k:"AST",v:"98",u:"U/L",abn:"high"}, {k:"総ビリルビン",v:"1.0",u:"mg/dL",abn:"normal"}, {k:"HBV-DNA",v:"2.8",u:"log IU/mL",abn:"high"} ],
+      finding:"腹部超音波で新規の腫瘤性病変や胆道拡張はない。PT-INR・アルブミンは保たれている。",
       prompts:{
-        severity:{ label:"この肝機能悪化の重症度を、CTCAEを踏まえてどう評価するか", ph:"ALT/AST・ビリルビンの何倍か、Grade分類、緊急性など…" },
-        pattern:{ label:"検査パターンと臨床経過から、原因をどう考えるか", ph:"R比、他のDILI・ウイルス・自己免疫との鑑別など…" },
-        workup:{ label:"ICI肝障害と診断する前に、除外すべきことと必要な検査は何か", ph:"腫瘍の肝浸潤・胆道閉塞の除外、ウイルス・自己抗体など…" },
-        action:{ label:"ICIの継続可否とステロイド治療の要否をどう判断するか", ph:"休薬・中止基準、ステロイド開始基準、専門科連携など…" }
+        severity:{ label:"既往感染からのHBV再活性化として、この状態の緊急性をどう評価するか", ph:"劇症化のリスク、脳症・凝固能の有無など…" },
+        pattern:{ label:"時系列(前回検査から今回まで)から何が読み取れるか", ph:"HBV-DNA陽転化とALT上昇の時間関係など…" },
+        workup:{ label:"再活性化と確定し、重症化を評価するために何を確認するか", ph:"HBV-DNA定量の推移、肝炎マーカー、PT-INR・ビリルビンなど…" },
+        action:{ label:"治療開始のタイミングと化学療法継続の可否をどう判断するか", ph:"核酸アナログの選択、化学療法チームとの連携など…" }
       },
       answer:{
-        severity:["CTCAEでは<mark>ALT/ASTが基準上限の5〜20倍でGrade3、20倍超でGrade4</mark>とされる。本例はALT410(基準上限35として約11.7倍)で<mark>Grade3相当</mark>と評価できる。ビリルビン・PT-INRは保たれており、脳症などの肝不全兆候は今のところない","<mark>CTCAE分類はAST/ALT・ビリルビンの数値のみに基づくため、実際の重症度(黄疸・PT-INR延長・脳症の有無)と乖離しうる</mark>ことを念頭に置き、数値だけでなく臨床像(黄疸・PT-INR・症状の推移)も総合して判断する"],
-        pattern:["<mark>R比 = (ALT410÷基準上限35≈11.7) ÷ (ALP92÷基準上限115≈0.80) ≈14.6で高値(肝細胞障害型)</mark>と判定できる。胆道閉塞や腫瘍の直接浸潤よりも<mark>免疫関連の肝細胞障害</mark>を考えるパターン","ICI投与中の肝機能悪化は<mark>ICI関連肝炎(免疫介在性)、腫瘍の肝転移・胆道浸潤、他の薬剤性肝障害、ウイルス性肝炎(既存感染の再活性化を含む)</mark>を鑑別に挙げる"],
-        workup:["腹部超音波(必要ならCT)で<mark>腫瘍による胆道閉塞・肝転移を除外</mark>する","<mark>投与開始前に陰性だったウイルスマーカーを再検し、新規の処方薬・サプリメント・飲酒がないか改めて問診</mark>して他のDILI・ウイルス性肝炎の可能性を除外する","自己免疫性肝炎に準じて<mark>抗核抗体・IgGなど</mark>も参考所見として確認することがある(ICI関連肝炎は組織学的に自己免疫性肝炎に類似するが、通常は自己抗体陰性のことが多い)"],
-        action:["<mark>Grade2(ALT/AST 3〜5倍、他の原因が否定的)の時点でICIを休薬</mark>し、Grade1へ改善するまで週1〜2回の肝機能フォローを行う。<mark>Grade3以上ではICIを休薬しステロイドを開始</mark>する(重症例・再燃例では恒久中止を検討する)","<mark>ステロイド開始後3〜5日で改善が乏しい場合はステロイド抵抗性を疑い、消化器内科・腫瘍内科と連携して追加治療</mark>を検討する。自己判断で経過観察を続けない","腫瘍治療の継続可否は<mark>回復後の再開(rechallenge)の是非を含め、腫瘍内科・肝臓内科で個別に協議</mark>する"]
+        severity:["現時点でPT-INR延長やビリルビン上昇、脳症所見はなく<mark>劇症化には至っていない</mark>が、<mark>HBV再活性化による肝炎は無治療のまま進行すると急性肝不全に至りうる</mark>ため、緊急性の高い所見として扱う"],
+        pattern:["<mark>4週間前は検出感度未満だったHBV-DNAが今回陽性化し、同時にALTが上昇</mark>している。これは典型的な<mark>既往感染(HBs抗原陰性・HBc抗体陽性)からのHBV再活性化</mark>のパターンで、リツキシマブ使用がその主要な誘因と考えられる"],
+        workup:["<mark>HBV-DNA定量の再検・推移</mark>を確認する(日本肝臓学会のガイドラインでは<mark>20 IU/mL[1.3 Log IU/mL]以上になった時点で直ちに核酸アナログを開始</mark>し、20 IU/mL未満の陽性であれば別の時点で再検する。本例は2.8 Log IU/mLで開始基準を満たす)","PT-INR・アルブミン・ビリルビンで<mark>肝予備能・重症化の兆候</mark>を評価する","A型・C型肝炎など他のウイルス性肝炎、薬剤性肝障害の可能性も念のため除外する"],
+        action:["<mark>HBV-DNAが20 IU/mL(1.3 Log IU/mL)以上に陽性化した時点(ALT上昇を待たず)で核酸アナログ治療を開始するのが原則</mark>であり、既にALT上昇も伴う本例では直ちにエンテカビルなどの核酸アナログを開始する","<mark>化学療法の継続可否は、肝炎の重症度(ビリルビン・PT-INR)を見ながら血液内科・肝臓内科で協議</mark>する。核酸アナログ開始により多くの場合は化学療法を中断せず継続できる","<mark>今後は肝臓専門医と連携し、核酸アナログは化学療法終了後も少なくとも12か月間継続し、投与終了後も少なくとも12か月間はHBV-DNAを含めて厳重に経過観察</mark>する"]
       },
-      rx:["Grade2:ICI休薬+週1〜2回の肝機能検査でフォロー。改善が乏しい、または悪化する場合はGrade3に準じて対応する","Grade3:ICI休薬(重症例・再燃例では中止を検討)+プレドニゾロン換算0.5〜2mg/kg/日を開始し、改善後は数週間かけて漸減する。Grade4は原則ICI恒久中止としステロイドを開始する","ステロイド抵抗性(治療開始後3〜5日で反応不良)の場合はミコフェノール酸モフェチルなどの追加免疫抑制療法を専門科と相談する。肝障害に対するインフリキシマブは肝毒性のリスクがあるため通常使用しない"],
-      pitfall:"<mark>ICI投与中の肝機能異常を「抗腫瘍薬だから仕方ない」と経過観察のみで様子を見る、あるいは逆に「ICI関連肝炎だろう」と決めつけてウイルス・胆道閉塞・他の薬剤性肝障害の除外を省略する</mark>のはいずれも危険。CTCAE Gradeだけで機械的に対応せず、臨床像(黄疸・PT-INR・症状)も併せて総合判断する。",
-      pearl:["ICI関連肝障害はCTCAEでAST/ALT・ビリルビンの上昇度からGrade分類し、<mark>Grade2で休薬、Grade3以上で休薬+ステロイド(Grade4は原則恒久中止)</mark>が基本方針","診断は<mark>他の原因(腫瘍浸潤・胆道閉塞・ウイルス・他剤性)を除外したうえでの除外診断</mark>であり、投与前のベースライン肝機能・ウイルスマーカーとの比較が重要","R比による肝細胞障害型/胆汁うっ滞型の分類は、ICI肝障害以外の原因(腫瘍浸潤・薬剤性)を考えるうえでも有用","ステロイド抵抗性の場合は自己判断で継続観察せず、早期に専門科と連携する"],
-      refs:[ {author:"日本肝臓学会.", title:"免疫チェックポイント阻害薬による肝障害の診断・治療指針 2025", source:"jsh.or.jp", year:"2025", url:"https://www.jsh.or.jp/medical/guidelines/medicalinfo/shindan_chiryou.html"}, {author:"Fontana RJ, Liou I, Reuben A, et al.", title:"AASLD practice guidance on drug, herbal, and dietary supplement–induced liver injury", source:"Hepatology", year:"2023", url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC9936988/"}, {author:"American Gastroenterological Association.", title:"Diagnosis and management of immune checkpoint inhibitor colitis and hepatitis", source:"gastro.org clinical guidance", url:"https://gastro.org/clinical-guidance/diagnosis-and-management-of-immune-checkpoint-inhibitor-colitis-and-hepatitis/"} ]
+      rx:["エンテカビル0.5mg/日(腎機能により減量)を速やかに開始する。テノホビル製剤も選択肢となる","治療開始後はHBV-DNA・ALT・PT-INR・ビリルビンをこまめにフォローし、悪化があれば肝臓専門医と入院管理を検討する","核酸アナログは<mark>化学療法終了後も少なくとも12か月間継続</mark>し、終了の可否(継続期間中のALT正常化・HBV-DNA持続陰性化など)は肝臓専門医と相談して決める。自己判断で中止しない"],
+      pitfall:"<mark>「HBs抗原陰性だから今回のHBV再活性化スクリーニングは終わり」と考え、既往感染(HBc抗体陽性/HBs抗体陽性)例のHBV-DNAモニタリングを省略する</mark>のは重大な見落とし。既往感染からの再活性化はHBs抗原陽性例と同様に重篤化しうる。また<mark>「ALT正常だから大丈夫」と経過観察を続けている間にHBV-DNAだけが先行して陽性化していることがあり、ALT上昇後に気づくのでは治療開始が遅れる</mark>。",
+      pearl:["<mark>免疫抑制・化学療法を開始する前は、原疾患によらずHBs抗原・HBc抗体・HBs抗体のスクリーニングを行う</mark>のが原則","HBs抗原陽性例は治療開始前から核酸アナログを予防投与し、<mark>既往感染(HBc抗体陽性かつHBs抗原陰性)例は治療中・終了後にHBV-DNAを定期的にモニタリングし、20 IU/mL(1.3 Log IU/mL)以上に陽性化した時点で核酸アナログを開始</mark>する","<mark>リツキシマブ・オビヌツズマブ(±ステロイド)、フルダラビンを用いる化学療法や造血幹細胞移植は既往感染からの再活性化の高リスク</mark>であり、治療中および終了後少なくとも12か月間はHBV-DNAを月1回モニタリングする","<mark>HBV-DNA陽転化は肝炎発症に先行することが多い</mark>ため、ALT上昇を待たずDNA陽性化の時点で核酸アナログを開始することで重症化を防げる"],
+      refs:[ {author:"日本肝臓学会.", title:"B型肝炎治療ガイドライン", source:"jsh.or.jp", url:"https://www.jsh.or.jp/medical/guidelines/jsh_guidlines/hepatitis_b.html"}, {author:"日本肝臓学会 肝炎診療ガイドライン作成委員会.", title:"免疫抑制・化学療法により発症するB型肝炎対策ガイドライン", source:"jsh.or.jp", url:"https://www.jsh.or.jp/lib/files/medical/guidelines/jsh_guidlines/B_document-3_v2.pdf"} ]
     },
     {
       id:"alf_apap", num:4, cat:"danger", tag:"急性経過・意識障害",
@@ -590,30 +583,7 @@
       refs:[ {author:"Polson J, Lee WM.", title:"AASLD position paper: The management of acute liver failure", source:"Hepatology 41(5):1179-1197", year:"2005", url:"https://pubmed.ncbi.nlm.nih.gov/15841455/"}, {author:"AASLD.", title:"Defining and Managing Acute Liver Failure", source:"AASLD Liver Fellow Network", url:"https://www.aasld.org/liver-fellow-network/core-series/back-basics/defining-and-managing-acute-liver-failure"}, {title:"N-Acetylcysteine", source:"StatPearls, NCBI Bookshelf", url:"https://www.ncbi.nlm.nih.gov/books/NBK537183/"} ]
     },
     {
-      id:"hbv_reactivation", num:5, cat:"chronic", tag:"免疫抑制療法中・ウイルス肝炎",
-      title:"免疫抑制療法中に判明したHBV再活性化", hint:"58歳男性・悪性リンパ腫にリツキシマブ併用化学療法中・定期採血でALT上昇",
-      vignette:"58歳男性。悪性リンパ腫に対しR-CHOP療法(リツキシマブ含む)を4コース施行中。治療開始前のスクリーニングでHBs抗原陰性、HBc抗体陽性、HBs抗体陽性(既往感染)であることが確認されていた。核酸アナログの予防投与は開始されていない。今回の定期採血でALT上昇を認め、自覚症状は特にない。前回(4週間前)の定期採血ではALTは正常で、HBV-DNAは検出感度未満だった。",
-      labs:[ {k:"ALT",v:"156",u:"U/L",abn:"high"}, {k:"AST",v:"98",u:"U/L",abn:"high"}, {k:"総ビリルビン",v:"1.0",u:"mg/dL",abn:"normal"}, {k:"HBV-DNA",v:"2.8",u:"log IU/mL",abn:"high"} ],
-      finding:"腹部超音波で新規の腫瘤性病変や胆道拡張はない。PT-INR・アルブミンは保たれている。",
-      prompts:{
-        severity:{ label:"既往感染からのHBV再活性化として、この状態の緊急性をどう評価するか", ph:"劇症化のリスク、脳症・凝固能の有無など…" },
-        pattern:{ label:"時系列(前回検査から今回まで)から何が読み取れるか", ph:"HBV-DNA陽転化とALT上昇の時間関係など…" },
-        workup:{ label:"再活性化と確定し、重症化を評価するために何を確認するか", ph:"HBV-DNA定量の推移、肝炎マーカー、PT-INR・ビリルビンなど…" },
-        action:{ label:"治療開始のタイミングと化学療法継続の可否をどう判断するか", ph:"核酸アナログの選択、化学療法チームとの連携など…" }
-      },
-      answer:{
-        severity:["現時点でPT-INR延長やビリルビン上昇、脳症所見はなく<mark>劇症化には至っていない</mark>が、<mark>HBV再活性化による肝炎は無治療のまま進行すると急性肝不全に至りうる</mark>ため、緊急性の高い所見として扱う"],
-        pattern:["<mark>4週間前は検出感度未満だったHBV-DNAが今回陽性化し、同時にALTが上昇</mark>している。これは典型的な<mark>既往感染(HBs抗原陰性・HBc抗体陽性)からのHBV再活性化</mark>のパターンで、リツキシマブ使用がその主要な誘因と考えられる"],
-        workup:["<mark>HBV-DNA定量の再検・推移</mark>を確認する(日本肝臓学会のガイドラインでは<mark>20 IU/mL[1.3 Log IU/mL]以上になった時点で直ちに核酸アナログを開始</mark>し、20 IU/mL未満の陽性であれば別の時点で再検する。本例は2.8 Log IU/mLで開始基準を満たす)","PT-INR・アルブミン・ビリルビンで<mark>肝予備能・重症化の兆候</mark>を評価する","A型・C型肝炎など他のウイルス性肝炎、薬剤性肝障害の可能性も念のため除外する"],
-        action:["<mark>HBV-DNAが20 IU/mL(1.3 Log IU/mL)以上に陽性化した時点(ALT上昇を待たず)で核酸アナログ治療を開始するのが原則</mark>であり、既にALT上昇も伴う本例では直ちにエンテカビルなどの核酸アナログを開始する","<mark>化学療法の継続可否は、肝炎の重症度(ビリルビン・PT-INR)を見ながら血液内科・肝臓内科で協議</mark>する。核酸アナログ開始により多くの場合は化学療法を中断せず継続できる","<mark>今後は肝臓専門医と連携し、核酸アナログは化学療法終了後も少なくとも12か月間継続し、投与終了後も少なくとも12か月間はHBV-DNAを含めて厳重に経過観察</mark>する"]
-      },
-      rx:["エンテカビル0.5mg/日(腎機能により減量)を速やかに開始する。テノホビル製剤も選択肢となる","治療開始後はHBV-DNA・ALT・PT-INR・ビリルビンをこまめにフォローし、悪化があれば肝臓専門医と入院管理を検討する","核酸アナログは<mark>化学療法終了後も少なくとも12か月間継続</mark>し、終了の可否(継続期間中のALT正常化・HBV-DNA持続陰性化など)は肝臓専門医と相談して決める。自己判断で中止しない"],
-      pitfall:"<mark>「HBs抗原陰性だから今回のHBV再活性化スクリーニングは終わり」と考え、既往感染(HBc抗体陽性/HBs抗体陽性)例のHBV-DNAモニタリングを省略する</mark>のは重大な見落とし。既往感染からの再活性化はHBs抗原陽性例と同様に重篤化しうる。また<mark>「ALT正常だから大丈夫」と経過観察を続けている間にHBV-DNAだけが先行して陽性化していることがあり、ALT上昇後に気づくのでは治療開始が遅れる</mark>。",
-      pearl:["<mark>免疫抑制・化学療法を開始する前は、原疾患によらずHBs抗原・HBc抗体・HBs抗体のスクリーニングを行う</mark>のが原則","HBs抗原陽性例は治療開始前から核酸アナログを予防投与し、<mark>既往感染(HBc抗体陽性かつHBs抗原陰性)例は治療中・終了後にHBV-DNAを定期的にモニタリングし、20 IU/mL(1.3 Log IU/mL)以上に陽性化した時点で核酸アナログを開始</mark>する","<mark>リツキシマブ・オビヌツズマブ(±ステロイド)、フルダラビンを用いる化学療法や造血幹細胞移植は既往感染からの再活性化の高リスク</mark>であり、治療中および終了後少なくとも12か月間はHBV-DNAを月1回モニタリングする","<mark>HBV-DNA陽転化は肝炎発症に先行することが多い</mark>ため、ALT上昇を待たずDNA陽性化の時点で核酸アナログを開始することで重症化を防げる"],
-      refs:[ {author:"日本肝臓学会.", title:"B型肝炎治療ガイドライン", source:"jsh.or.jp", url:"https://www.jsh.or.jp/medical/guidelines/jsh_guidlines/hepatitis_b.html"}, {author:"日本肝臓学会 肝炎診療ガイドライン作成委員会.", title:"免疫抑制・化学療法により発症するB型肝炎対策ガイドライン", source:"jsh.or.jp", url:"https://www.jsh.or.jp/lib/files/medical/guidelines/jsh_guidlines/B_document-3_v2.pdf"} ]
-    },
-    {
-      id:"cirrhosis_decompensation", num:6, cat:"chronic", tag:"肝硬変合併症",
+      id:"cirrhosis_decompensation", num:5, cat:"chronic", tag:"肝硬変合併症",
       title:"肝硬変患者の意識障害と腹水増悪 ― 誘因検索とACLF", hint:"70歳男性・C型肝炎後肝硬変で通院中・数日前からの見当識障害と腹部膨満",
       vignette:"70歳男性。C型肝炎による代償性肝硬変で通院中(直近の外来ではChild-Pugh A[6点]、腹部超音波で肝表面凹凸不整・脾腫を指摘されている)。3日前から日中の傾眠傾向と、家族から見て会話のつじつまが合わないことが増え、同時に腹部膨満が急速に進行し受診した。体温37.6℃、血圧106/64mmHg。腹部は膨隆し波動を触れ、圧痛は軽度。上肢を伸展させ手関節を背屈保持させると軽度の羽ばたき運動を認める。",
       labs:[ {k:"総ビリルビン",v:"5.6",u:"mg/dL",abn:"high"}, {k:"アルブミン",v:"2.6",u:"g/dL",abn:"low"}, {k:"PT-INR",v:"1.9",u:"",abn:"high"}, {k:"Na",v:"131",u:"mEq/L",abn:"low"}, {k:"Cr",v:"1.4",u:"mg/dL",abn:"high"} ],
@@ -634,6 +604,29 @@
       pitfall:"<mark>「肝硬変患者の意識障害=肝性脳症」と決めつけ、感染(SBP)や消化管出血などの誘因検索を省略してラクツロースだけで様子を見る</mark>のは典型的な誤り。誘因が未治療のままでは脳症は改善しない。逆に<mark>アンモニア値が正常だからといって肝性脳症を否定してしまう</mark>のも誤り。",
       pearl:["肝硬変患者が増悪要因を契機に<mark>28日以内にPT-INR≥1.5かつ総ビリルビン≥5.0mg/dL</mark>となった状態は<mark>ACLF</mark>(国内基準)として捉え、誘因(感染・出血・脱水など)の検索と是正を治療の中心に据える","<mark>Child-Pughは日常臨床での重症度・治療方針の目安、MELDは主に移植優先順位判定</mark>という使い分けを意識する","<mark>SBPの診断基準は腹水PMN数250/mm³以上</mark>であり、症状に乏しくても腹水穿刺を行う閾値を低く持つ","<mark>肝性脳症は誘因治療とセットで行う</mark>。アンモニア値は補助的指標にとどめ、単独診断・除外の根拠にしない","安定した外来フォローでは<mark>肝細胞癌サーベイランス</mark>など合併症スクリーニングを定期的に継続する"],
       refs:[ {title:"Recognition and Management of Spontaneous Bacterial Peritonitis", source:"University of Washington HCV/Liver Disease Online Curriculum", url:"https://www.hepatitisc.uw.edu/pdf/management-cirrhosis-related-complications/spontaneous-bacterial-peritonitis-recognition-management/core-concept/all.html"}, {author:"Sort P, Navasa M, Arroyo V, et al.", title:"Effect of intravenous albumin on renal impairment and mortality in patients with cirrhosis and spontaneous bacterial peritonitis（アルブミン1.5→1.0g/kg投与法の原著）", source:"New England Journal of Medicine 341:403-409", year:"1999", url:"https://pubmed.ncbi.nlm.nih.gov/10432325/"}, {author:"持田智, 井戸章雄, ほか.", title:"我が国におけるAcute on Chronic Liver Failure(ACLF)の全国調査（国内ACLF診断基準を収載）", source:"厚生労働科学研究費補助金 難治性の肝・胆道疾患に関する調査研究 分担研究報告書(令和元年度)", url:"https://mhlw-grants.niph.go.jp/system/files/2019/192051/201911031A_upload/201911031A202005271201012420029.pdf"}, {title:"Use Of The Child Pugh Score In Liver Disease", source:"StatPearls, NCBI Bookshelf", url:"https://www.ncbi.nlm.nih.gov/books/NBK542308/"} ]
+    },
+    {
+      id:"ici_hepatitis", num:6, cat:"danger", tag:"薬剤性・免疫関連",
+      title:"免疫チェックポイント阻害薬治療中の肝障害", hint:"62歳男性・進行肺癌にニボルマブ投与中・倦怠感と肝機能悪化",
+      vignette:"62歳男性。進行非小細胞肺癌に対しニボルマブ単剤療法を8週間前から4回投与されている。投与開始前のスクリーニングでHBs抗原・HCV抗体は陰性だった。1週間前からの倦怠感と食欲低下を主訴に外来を受診した。体温36.8℃、皮疹や関節痛はない。腹部に圧痛はなく、肝腫大は触知しない。",
+      labs:[ {k:"AST",v:"245",u:"U/L",abn:"high"}, {k:"ALT",v:"410",u:"U/L",abn:"high"}, {k:"ALP",v:"92",u:"U/L",abn:"normal"}, {k:"総ビリルビン",v:"0.9",u:"mg/dL",abn:"normal"}, {k:"PT-INR",v:"1.0",u:"",abn:"normal"} ],
+      finding:"腹部超音波:肝腫大なし、腹水なし、胆管拡張を認めない。",
+      prompts:{
+        severity:{ label:"この肝機能悪化の重症度を、CTCAEを踏まえてどう評価するか", ph:"ALT/AST・ビリルビンの何倍か、Grade分類、緊急性など…" },
+        pattern:{ label:"検査パターンと臨床経過から、原因をどう考えるか", ph:"R比、他のDILI・ウイルス・自己免疫との鑑別など…" },
+        workup:{ label:"ICI肝障害と診断する前に、除外すべきことと必要な検査は何か", ph:"腫瘍の肝浸潤・胆道閉塞の除外、ウイルス・自己抗体など…" },
+        action:{ label:"ICIの継続可否とステロイド治療の要否をどう判断するか", ph:"休薬・中止基準、ステロイド開始基準、専門科連携など…" }
+      },
+      answer:{
+        severity:["CTCAEでは<mark>ALT/ASTが基準上限の5〜20倍でGrade3、20倍超でGrade4</mark>とされる。本例はALT410(基準上限35として約11.7倍)で<mark>Grade3相当</mark>と評価できる。ビリルビン・PT-INRは保たれており、脳症などの肝不全兆候は今のところない","<mark>CTCAE分類はAST/ALT・ビリルビンの数値のみに基づくため、実際の重症度(黄疸・PT-INR延長・脳症の有無)と乖離しうる</mark>ことを念頭に置き、数値だけでなく臨床像(黄疸・PT-INR・症状の推移)も総合して判断する"],
+        pattern:["<mark>R比 = (ALT410÷基準上限35≈11.7) ÷ (ALP92÷基準上限115≈0.80) ≈14.6で高値(肝細胞障害型)</mark>と判定できる。胆道閉塞や腫瘍の直接浸潤よりも<mark>免疫関連の肝細胞障害</mark>を考えるパターン","ICI投与中の肝機能悪化は<mark>ICI関連肝炎(免疫介在性)、腫瘍の肝転移・胆道浸潤、他の薬剤性肝障害、ウイルス性肝炎(既存感染の再活性化を含む)</mark>を鑑別に挙げる"],
+        workup:["腹部超音波(必要ならCT)で<mark>腫瘍による胆道閉塞・肝転移を除外</mark>する","<mark>投与開始前に陰性だったウイルスマーカーを再検し、新規の処方薬・サプリメント・飲酒がないか改めて問診</mark>して他のDILI・ウイルス性肝炎の可能性を除外する","自己免疫性肝炎に準じて<mark>抗核抗体・IgGなど</mark>も参考所見として確認することがある(ICI関連肝炎は組織学的に自己免疫性肝炎に類似するが、通常は自己抗体陰性のことが多い)"],
+        action:["<mark>Grade2(ALT/AST 3〜5倍、他の原因が否定的)の時点でICIを休薬</mark>し、Grade1へ改善するまで週1〜2回の肝機能フォローを行う。<mark>Grade3以上ではICIを休薬しステロイドを開始</mark>する(重症例・再燃例では恒久中止を検討する)","<mark>ステロイド開始後3〜5日で改善が乏しい場合はステロイド抵抗性を疑い、消化器内科・腫瘍内科と連携して追加治療</mark>を検討する。自己判断で経過観察を続けない","腫瘍治療の継続可否は<mark>回復後の再開(rechallenge)の是非を含め、腫瘍内科・肝臓内科で個別に協議</mark>する"]
+      },
+      rx:["Grade2:ICI休薬+週1〜2回の肝機能検査でフォロー。改善が乏しい、または悪化する場合はGrade3に準じて対応する","Grade3:ICI休薬(重症例・再燃例では中止を検討)+プレドニゾロン換算0.5〜2mg/kg/日を開始し、改善後は数週間かけて漸減する。Grade4は原則ICI恒久中止としステロイドを開始する","ステロイド抵抗性(治療開始後3〜5日で反応不良)の場合はミコフェノール酸モフェチルなどの追加免疫抑制療法を専門科と相談する。肝障害に対するインフリキシマブは肝毒性のリスクがあるため通常使用しない"],
+      pitfall:"<mark>ICI投与中の肝機能異常を「抗腫瘍薬だから仕方ない」と経過観察のみで様子を見る、あるいは逆に「ICI関連肝炎だろう」と決めつけてウイルス・胆道閉塞・他の薬剤性肝障害の除外を省略する</mark>のはいずれも危険。CTCAE Gradeだけで機械的に対応せず、臨床像(黄疸・PT-INR・症状)も併せて総合判断する。",
+      pearl:["ICI関連肝障害はCTCAEでAST/ALT・ビリルビンの上昇度からGrade分類し、<mark>Grade2で休薬、Grade3以上で休薬+ステロイド(Grade4は原則恒久中止)</mark>が基本方針","診断は<mark>他の原因(腫瘍浸潤・胆道閉塞・ウイルス・他剤性)を除外したうえでの除外診断</mark>であり、投与前のベースライン肝機能・ウイルスマーカーとの比較が重要","R比による肝細胞障害型/胆汁うっ滞型の分類は、ICI肝障害以外の原因(腫瘍浸潤・薬剤性)を考えるうえでも有用","ステロイド抵抗性の場合は自己判断で継続観察せず、早期に専門科と連携する"],
+      refs:[ {author:"日本肝臓学会.", title:"免疫チェックポイント阻害薬による肝障害の診断・治療指針 2025", source:"jsh.or.jp", year:"2025", url:"https://www.jsh.or.jp/medical/guidelines/medicalinfo/shindan_chiryou.html"}, {author:"Fontana RJ, Liou I, Reuben A, et al.", title:"AASLD practice guidance on drug, herbal, and dietary supplement–induced liver injury", source:"Hepatology", year:"2023", url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC9936988/"}, {author:"American Gastroenterological Association.", title:"Diagnosis and management of immune checkpoint inhibitor colitis and hepatitis", source:"gastro.org clinical guidance", url:"https://gastro.org/clinical-guidance/diagnosis-and-management-of-immune-checkpoint-inhibitor-colitis-and-hepatitis/"} ]
     }
   ];
 
@@ -889,11 +882,10 @@
         html += '<div class="case-grid">'+rev.map(caseCardHtml).join("")+'</div>';
       }
     } else {
-      ["pattern","danger","chronic"].forEach(function(cat){
-        var list = CASES.filter(function(c){ return c.cat===cat; });
-        html += '<div class="section-head '+cat+'"><span class="dot"></span><h2>'+CAT_LABEL[cat]+'</h2><span class="count">'+list.length+'症例</span></div>';
-        html += '<div class="case-grid">'+list.map(caseCardHtml).join("")+'</div>';
-      });
+      // カテゴリ(パターン認識/急性・重症/慢性)で区分すると一覧の時点で重症度が推測できてしまうため、
+      // 区分せず1つの一覧にする。カテゴリは解答後の表示(diagnosis-reveal)でのみ示す。
+      html += '<div class="section-head"><span class="dot" style="background:var(--primary)"></span><h2>症例一覧</h2><span class="count">'+CASES.length+'症例</span></div>';
+      html += '<div class="case-grid">'+CASES.map(caseCardHtml).join("")+'</div>';
     }
 
     return html;
@@ -901,11 +893,10 @@
 
   function caseCardHtml(c){
     var status = safeStatus(state.progress[c.id]);
-    var cat = safeCat(c.cat);
     var numStr = (c.num<10?"0":"")+c.num;
     return '<button class="case-card" data-action="open-case" data-id="'+c.id+'">'+
-      '<span class="ion-badge '+cat+'">'+CAT_BADGE[cat]+'</span>'+
-      '<span class="case-body"><span class="hint">'+numStr+'　'+c.hint+'</span></span>'+
+      '<span class="ion-badge">'+numStr+'</span>'+
+      '<span class="case-body"><span class="hint">'+c.hint+'</span></span>'+
       '<span class="status-chip '+status+'">'+statusLabel(status)+'</span>'+
     '</button>';
   }
@@ -922,9 +913,8 @@
   }
 
   function renderCase(c){
-    var cat = safeCat(c.cat);
     var html = "";
-    html += '<div class="case-hero"><div class="tag '+cat+'">症例 '+(c.num<10?"0":"")+c.num+'・'+c.tag+'</div><h1>'+c.hint+'</h1></div>';
+    html += '<div class="case-hero"><div class="tag">症例 '+(c.num<10?"0":"")+c.num+'・'+c.tag+'</div><h1>'+c.hint+'</h1></div>';
     html += '<div class="vignette">'+c.vignette;
     html += '<div class="lab-strip">'+c.labs.map(labChipHtml).join("")+'</div>';
     if(c.finding){ html += '<div class="finding-line"><b>所見　</b>'+escapeHtml(c.finding)+'</div>'; }
