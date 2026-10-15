@@ -521,10 +521,10 @@
       refs:[ {author:"Rinella ME, Lazarus JV, Ratziu V, et al.", title:"A multisociety Delphi consensus statement on new fatty liver disease nomenclature（新命名法の解説）", source:"AASLD", year:"2023", url:"https://www.aasld.org/new-masld-nomenclature"}, {author:"Sterling RK, Lissen E, Clumeck N, et al.", title:"Development of a simple noninvasive index to predict significant fibrosis in patients with HIV/HCV coinfection（FIB-4の計算式の原著。年齢別カットオフは後続の検証研究による）", source:"Hepatology 43(6):1317-1325", year:"2006", url:"https://pubmed.ncbi.nlm.nih.gov/16729309/"}, {title:"Spare Me the Jab: Noninvasive Assessment of Patients with MASLD（年齢別FIB-4カットオフの解説）", source:"AASLD Liver Fellow Network", url:"https://www.aasld.org/liver-fellow-network/core-series/clinical-pearls/spare-me-jab-noninvasive-assessment-patients-masld"}, {author:"日本肝臓学会.", title:"C型肝炎治療ガイドライン（ウイルスマーカーの選択・解釈）", source:"jsh.or.jp", url:"https://www.jsh.or.jp/medical/guidelines/jsh_guidlines/hepatitis_c.html"} ]
     },
     {
-      id:"fever_jaundice_cholangitis", num:2, cat:"danger", tag:"急性期・胆道感染",
-      title:"発熱と黄疸 ― 胆道系危険信号の初期評価", hint:"68歳女性・悪寒戦慄を伴う発熱と黄疸で救急搬送・総胆管結石の既往",
-      vignette:"68歳女性。3年前に総胆管結石の既往がある。昨夜からの悪寒戦慄を伴う発熱と心窩部〜右季肋部の持続する痛みで救急搬送された。体温39.4℃、脈拍112/分、血圧98/62mmHg。皮膚・眼球結膜に黄染を認める。右季肋部に圧痛があるが、深呼吸を止めさせるほど著明な圧痛は明らかではない。輸液を開始したが、収縮期血圧は90mmHg台前半で推移している。",
-      labs:[ {k:"WBC",v:"16800",u:"/μL",abn:"high"}, {k:"CRP",v:"18.2",u:"mg/dL",abn:"high"}, {k:"総ビリルビン",v:"4.8",u:"mg/dL",abn:"high"}, {k:"ALP",v:"512",u:"U/L",abn:"high"}, {k:"AST",v:"78",u:"U/L",abn:"high"}, {k:"ALT",v:"96",u:"U/L",abn:"high"} ],
+      id:"fever_jaundice_cholangitis", num:2, cat:"danger", tag:"急性期・発熱と黄疸",
+      title:"発熱と黄疸 ― 重症度評価と初期対応", hint:"68歳女性・悪寒戦慄を伴う発熱と黄疸で救急搬送・総胆管結石の既往",
+      vignette:"68歳女性。3年前に総胆管結石の既往がある。昨夜からの悪寒戦慄を伴う発熱と心窩部〜右季肋部の持続する痛みで救急搬送された。体温39.4℃、脈拍112/分、血圧98/62mmHg、SpO2 96%(室内気)。意識は清明。皮膚・眼球結膜に黄染を認める。右季肋部に圧痛があるが、深呼吸を止めさせるほど著明な圧痛は明らかではない。輸液を開始したが、収縮期血圧は90mmHg台前半で推移している。",
+      labs:[ {k:"WBC",v:"16800",u:"/μL",abn:"high"}, {k:"CRP",v:"18.2",u:"mg/dL",abn:"high"}, {k:"総ビリルビン",v:"4.8",u:"mg/dL",abn:"high"}, {k:"ALP",v:"512",u:"U/L",abn:"high"}, {k:"AST",v:"78",u:"U/L",abn:"high"}, {k:"ALT",v:"96",u:"U/L",abn:"high"}, {k:"血小板",v:"16.2",u:"万/μL",abn:"normal"}, {k:"Cr",v:"0.9",u:"mg/dL",abn:"normal"} ],
       finding:"腹部超音波:総胆管の拡張(11mm)と、その末梢に軽度の肝内胆管拡張を認める。胆嚢内に結石を疑う所見あり。",
       prompts:{
         severity:{ label:"バイタルサインと検査値から、この患者の重症度をどう評価するか", ph:"TG18の診断・重症度基準、循環動態の解釈など…" },
@@ -563,14 +563,14 @@
       },
       rx:["Grade2:ICI休薬+週1〜2回の肝機能検査でフォロー。改善が乏しい、または悪化する場合はGrade3に準じて対応する","Grade3:ICI休薬(重症例・再燃例では中止を検討)+プレドニゾロン換算0.5〜2mg/kg/日を開始し、改善後は数週間かけて漸減する。Grade4は原則ICI恒久中止としステロイドを開始する","ステロイド抵抗性(治療開始後3〜5日で反応不良)の場合はミコフェノール酸モフェチルなどの追加免疫抑制療法を専門科と相談する。肝障害に対するインフリキシマブは肝毒性のリスクがあるため通常使用しない"],
       pitfall:"<mark>ICI投与中の肝機能異常を「抗腫瘍薬だから仕方ない」と経過観察のみで様子を見る、あるいは逆に「ICI関連肝炎だろう」と決めつけてウイルス・胆道閉塞・他の薬剤性肝障害の除外を省略する</mark>のはいずれも危険。CTCAE Gradeだけで機械的に対応せず、臨床像(黄疸・PT-INR・症状)も併せて総合判断する。",
-      pearl:["ICI関連肝障害はCTCAEでAST/ALT・ビリルビンの上昇度からGrade分類し、<mark>Grade2で休薬、Grade3以上で中止+ステロイド</mark>が基本方針","診断は<mark>他の原因(腫瘍浸潤・胆道閉塞・ウイルス・他剤性)を除外したうえでの除外診断</mark>であり、投与前のベースライン肝機能・ウイルスマーカーとの比較が重要","R比による肝細胞障害型/胆汁うっ滞型の分類は、ICI肝障害以外の原因(腫瘍浸潤・薬剤性)を考えるうえでも有用","ステロイド抵抗性の場合は自己判断で継続観察せず、早期に専門科と連携する"],
+      pearl:["ICI関連肝障害はCTCAEでAST/ALT・ビリルビンの上昇度からGrade分類し、<mark>Grade2で休薬、Grade3以上で休薬+ステロイド(Grade4は原則恒久中止)</mark>が基本方針","診断は<mark>他の原因(腫瘍浸潤・胆道閉塞・ウイルス・他剤性)を除外したうえでの除外診断</mark>であり、投与前のベースライン肝機能・ウイルスマーカーとの比較が重要","R比による肝細胞障害型/胆汁うっ滞型の分類は、ICI肝障害以外の原因(腫瘍浸潤・薬剤性)を考えるうえでも有用","ステロイド抵抗性の場合は自己判断で継続観察せず、早期に専門科と連携する"],
       refs:[ {author:"日本肝臓学会.", title:"免疫チェックポイント阻害薬による肝障害の診断・治療指針 2025", source:"jsh.or.jp", year:"2025", url:"https://www.jsh.or.jp/medical/guidelines/medicalinfo/shindan_chiryou.html"}, {author:"Fontana RJ, Liou I, Reuben A, et al.", title:"AASLD practice guidance on drug, herbal, and dietary supplement–induced liver injury", source:"Hepatology", year:"2023", url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC9936988/"}, {author:"American Gastroenterological Association.", title:"Diagnosis and management of immune checkpoint inhibitor colitis and hepatitis", source:"gastro.org clinical guidance", url:"https://gastro.org/clinical-guidance/diagnosis-and-management-of-immune-checkpoint-inhibitor-colitis-and-hepatitis/"} ]
     },
     {
       id:"alf_apap", num:4, cat:"danger", tag:"急性経過・意識障害",
       title:"意識障害とPT-INR延長 ― 急性肝不全を疑う", hint:"28歳女性・数日前の市販鎮痛薬大量服用後・傾眠と会話のかみ合わなさで搬送",
       vignette:"28歳女性。既往に肝疾患はない。4日前、市販の解熱鎮痛薬(アセトアミノフェン含有)を通常量の数倍以上服用したことが、同居家族への後日の聴取で判明した。本日、家族が呼びかけへの反応が鈍く会話がかみ合わないことに気づき救急搬送した。体温36.2℃、血圧104/68mmHg、脈拍98/分。眼球結膜に軽度黄染があり、上肢を伸展させ手関節を背屈保持させると不規則な羽ばたき様の運動を認める。",
-      labs:[ {k:"ALT",v:"4850",u:"U/L",abn:"high"}, {k:"PT-INR",v:"3.8",u:"",abn:"high"}, {k:"血糖",v:"58",u:"mg/dL",abn:"low"}, {k:"乳酸",v:"5.8",u:"mmol/L",abn:"high"}, {k:"Cr",v:"1.9",u:"mg/dL",abn:"high"} ],
+      labs:[ {k:"AST",v:"5620",u:"U/L",abn:"high"}, {k:"ALT",v:"4850",u:"U/L",abn:"high"}, {k:"ALP",v:"168",u:"U/L",abn:"high"}, {k:"総ビリルビン",v:"3.6",u:"mg/dL",abn:"high"}, {k:"PT-INR",v:"3.8",u:"",abn:"high"}, {k:"血糖",v:"58",u:"mg/dL",abn:"low"}, {k:"乳酸",v:"5.8",u:"mmol/L",abn:"high"}, {k:"Cr",v:"1.9",u:"mg/dL",abn:"high"} ],
       finding:"見当識障害があり、簡単な指示にはかろうじて応じるが意識レベルが変動する。腹水や下腿浮腫、クモ状血管腫は認めない。",
       prompts:{
         severity:{ label:"この患者の病態を、急性肝不全の定義に照らしてどう評価するか", ph:"脳症の有無、PT-INR、基礎疾患の有無、発症からの期間など…" },
@@ -580,13 +580,13 @@
       },
       answer:{
         severity:["<mark>基礎に肝疾患のない患者で、脳症(羽ばたき様運動・意識変容)とPT-INR≥1.5(本例3.8)が発症26週未満で揃っており、急性肝不全(ALF)の定義を満たす</mark>(自己免疫性肝炎やWilson病など、基礎に肝硬変があってもALFとして扱う例外もある)。低血糖・乳酸上昇・Cr上昇も伴い、多臓器に既に影響が及んでいる<mark>重症例</mark>と判断する","<mark>基礎疾患としての肝硬変がなくALFと判断できる点が、慢性肝疾患の急性増悪であるACLFとの違い</mark>。既存の肝硬変がある患者で同様の病態を見た場合はACLFを考える"],
-        pattern:["<mark>AST・ALTが著明に上昇しビリルビン・PT-INRも上昇する肝細胞障害型で、数日前の大量服薬歴から薬物中毒(アセトアミノフェン)を最も疑う</mark>","<mark>ALF/ACLFの原因は、頻度は高くなくても見逃すと致命的なものを必ず鑑別に挙げる</mark>:アセトアミノフェン中毒、虚血性肝障害(本例はショックの既往なく否定的)、急性ウイルス性肝炎(A型・B型)、自己免疫性肝炎、Budd-Chiari症候群、妊娠関連肝疾患(妊娠反応で確認する)"],
+        pattern:["<mark>AST・ALTが著明に上昇しビリルビン・PT-INRも上昇する肝細胞障害型(R比=(4850÷35≈139)÷(168÷115≈1.46)≈95)で、数日前の大量服薬歴から薬物中毒(アセトアミノフェン)を最も疑う</mark>","<mark>ALF/ACLFの原因は、頻度は高くなくても見逃すと致命的なものを必ず鑑別に挙げる</mark>:アセトアミノフェン中毒、虚血性肝障害(本例はショックの既往なく否定的)、急性ウイルス性肝炎(A型・B型)、自己免疫性肝炎、Budd-Chiari症候群、妊娠関連肝疾患(妊娠反応で確認する)"],
         workup:["<mark>アセトアミノフェン血中濃度</mark>を測定し、内服からの経過時間と合わせて中毒域かを評価する(Rumack-Matthewノモグラムは内服時刻が明確な単回大量服薬に適用する)","動脈血ガスでpH・乳酸を確認し、<mark>頭部CTで脳浮腫の評価</mark>(高度脳症では必須)を行う","<mark>ウイルス性肝炎マーカー、自己抗体、妊娠反応(hCG)、腹部超音波(門脈・肝静脈の血流評価を含む)</mark>は服薬歴があっても省略せず一通り確認し、他の原因を見逃さない"],
         action:["<mark>アセトアミノフェンが疑われる、または原因不明の急性肝障害では、内服からの経過時間や血中濃度によらずN-アセチルシステイン(NAC)を速やかに開始</mark>する(肝障害が既に進行している場合も投与のタイミングを問わず開始する)","<mark>低血糖・電解質異常を補正し、高度脳症(Grade III/IV)があれば頭蓋内圧管理と気道確保を検討</mark>する。集中治療管理が必要","<mark>King's Collegeの基準(アセトアミノフェン中毒例:pH<7.3、またはPT-INR>6.5・Cr>3.4mg/dL・Grade III/IV脳症の3項目すべて。非アセトアミノフェン例は別基準)</mark>を満たす、あるいは満たしていなくても急速に増悪する場合は、基準充足を待たずに早期に肝臓専門医・移植施設に連絡する","<mark>PT-INR延長のみでは(活動性出血や侵襲的処置がない限り)新鮮凍結血漿を安易に投与しない</mark>。PT-INRは重症度・移植適応判断の指標であり、不用意なFFP投与はこの指標を覆い隠してしまう","循環・意識が安定した段階で、<mark>大量服薬に至った背景(自殺企図の可能性)の評価と精神科連携・安全確保</mark>を行う"]
       },
-      rx:["N-アセチルシステイン静注:初回150mg/kgを1時間、次に50mg/kgを4時間、その後100mg/kgを16時間で投与(総量300mg/kg/21時間、いわゆる3バッグ法)。肝障害が既に進行している例では標準プロトコル終了後も肝機能・PT-INRの改善傾向が得られるまで投与を延長することがあり、中毒専門医・中毒110番への相談を検討する","低血糖に対しブドウ糖を投与し、電解質(K・P・Mgなど)を補正する","高度脳症・脳浮腫を疑う場合は頭部挙上、必要に応じて高張食塩水/マンニトールを中毒・集中治療の専門医と検討し、気道保護のための挿管を早めに判断する"],
+      rx:["N-アセチルシステイン静注:初回150mg/kgを1時間、次に50mg/kgを4時間、その後100mg/kgを16時間で投与(総量300mg/kg/21時間、いわゆる3バッグ法)。肝障害が既に進行している例では標準プロトコル終了後も肝機能・PT-INRの改善傾向が得られるまで投与を延長することがあり、中毒専門医・中毒110番への相談を検討する。<mark>静注製剤は国内未承認で、国内で承認されているのは経口のアセチルシステイン内用液17.6%(初回140mg/kg、4時間後から70mg/kgを4時間ごとに17回、計18回)</mark>であり、意識障害時は胃管から投与する","低血糖に対しブドウ糖を投与し、電解質(K・P・Mgなど)を補正する","高度脳症・脳浮腫を疑う場合は頭部挙上、必要に応じて高張食塩水/マンニトールを中毒・集中治療の専門医と検討し、気道保護のための挿管を早めに判断する"],
       pitfall:"<mark>「PT-INRが延長しているから新鮮凍結血漿で補正する」という反射的な対応は避ける</mark>。出血していない限りFFPは不要であり、投与すると重症度・移植適応判断に使うPT-INRの値そのものを消してしまう。また<mark>「AST/ALTが下がってきたから軽快している」と誤解しない</mark>ことも重要で、アセトアミノフェン中毒ではトランスアミナーゼは早期にピークをつけて自然に低下する一方、ビリルビン・PT-INR・脳症は遅れて悪化することがある。",
-      pearl:["急性肝不全(ALF)は<mark>①基礎に肝疾患がない、②脳症、③PT-INR≥1.5、④発症26週未満</mark>という4条件で定義される","<mark>King's College基準(アセトアミノフェン中毒例)はpH<7.3単独、またはPT-INR>6.5+Cr>3.4mg/dL+Grade III/IV脳症の3項目すべて</mark>が予後不良・移植適応の目安(非アセトアミノフェン例は別基準)だが、基準を満たすのを待たず早期に専門施設へ相談する","アセトアミノフェン中毒はNACが特異的解毒薬であり、<mark>肝障害が既に進行していても中止せず投与する</mark>のが原則","<mark>トランスアミナーゼの改善だけで安心せず、ビリルビン・PT-INR・意識レベルの推移で重症度を追う</mark>"],
+      pearl:["急性肝不全(ALF)は<mark>①基礎に肝疾患がない、②脳症、③PT-INR≥1.5、④発症26週未満</mark>という4条件で定義される(AASLD)。国内の診断基準(2011年厚労省研究班)は<mark>初発症状から8週以内にPT 40%以下またはINR≥1.5</mark>を満たすもので、脳症の有無で非昏睡型(昏睡I度以下)/昏睡型(II度以上)に分ける","<mark>King's College基準(アセトアミノフェン中毒例)はpH<7.3単独、またはPT-INR>6.5+Cr>3.4mg/dL+Grade III/IV脳症の3項目すべて</mark>が予後不良・移植適応の目安(非アセトアミノフェン例は別基準)だが、基準を満たすのを待たず早期に専門施設へ相談する","アセトアミノフェン中毒はNACが特異的解毒薬であり、<mark>肝障害が既に進行していても中止せず投与する</mark>のが原則","<mark>トランスアミナーゼの改善だけで安心せず、ビリルビン・PT-INR・意識レベルの推移で重症度を追う</mark>"],
       refs:[ {author:"Polson J, Lee WM.", title:"AASLD position paper: The management of acute liver failure", source:"Hepatology 41(5):1179-1197", year:"2005", url:"https://pubmed.ncbi.nlm.nih.gov/15841455/"}, {author:"AASLD.", title:"Defining and Managing Acute Liver Failure", source:"AASLD Liver Fellow Network", url:"https://www.aasld.org/liver-fellow-network/core-series/back-basics/defining-and-managing-acute-liver-failure"}, {title:"N-Acetylcysteine", source:"StatPearls, NCBI Bookshelf", url:"https://www.ncbi.nlm.nih.gov/books/NBK537183/"} ]
     },
     {
@@ -616,7 +616,7 @@
       id:"cirrhosis_decompensation", num:6, cat:"chronic", tag:"肝硬変合併症",
       title:"肝硬変患者の意識障害と腹水増悪 ― 誘因検索とACLF", hint:"70歳男性・C型肝炎後肝硬変で通院中・数日前からの見当識障害と腹部膨満",
       vignette:"70歳男性。C型肝炎による代償性肝硬変で通院中(直近の腹部超音波で肝表面凹凸不整・脾腫を指摘されている)。3日前から日中の傾眠傾向と、家族から見て会話のつじつまが合わないことが増え、同時に腹部膨満が急速に進行し受診した。体温37.6℃、血圧106/64mmHg。腹部は膨隆し波動を触れ、圧痛は軽度。上肢を伸展させ手関節を背屈保持させると軽度の羽ばたき運動を認める。",
-      labs:[ {k:"総ビリルビン",v:"3.4",u:"mg/dL",abn:"high"}, {k:"アルブミン",v:"2.6",u:"g/dL",abn:"low"}, {k:"PT-INR",v:"1.9",u:"",abn:"high"}, {k:"Na",v:"131",u:"mEq/L",abn:"low"} ],
+      labs:[ {k:"総ビリルビン",v:"3.4",u:"mg/dL",abn:"high"}, {k:"アルブミン",v:"2.6",u:"g/dL",abn:"low"}, {k:"PT-INR",v:"1.9",u:"",abn:"high"}, {k:"Na",v:"131",u:"mEq/L",abn:"low"}, {k:"Cr",v:"1.4",u:"mg/dL",abn:"high"} ],
       finding:"腹水穿刺:外観やや混濁、多形核白血球(PMN)数312/mm³。血液・腹水培養を提出済み。",
       prompts:{
         severity:{ label:"この患者の病態を、既存の肝硬変を踏まえてどう評価するか", ph:"ACLFの考え方、Child-Pugh/MELDの計算など…" },
@@ -625,12 +625,12 @@
         action:{ label:"誘因への対応と肝性脳症そのものの治療、今後のフォローをどう組み立てるか", ph:"SBPの治療、脳症治療薬、退院後のサーベイランスなど…" }
       },
       answer:{
-        severity:["<mark>既に肝硬変と分かっている患者に急性の意識障害・臓器障害が加わった状態であり、急性肝不全(ALF)ではなく、慢性肝疾患の急性増悪であるACLF(acute-on-chronic liver failure)の枠組みで考える</mark>","<mark>Child-Pugh点数(ビリルビン・アルブミン・PT-INR・腹水・脳症の5項目、5〜15点でA/B/Cに分類)</mark>を計算すると、本例は概ねC(重症)相当となる。<mark>MELDスコア(ビリルビン・PT-INR・クレアチニンから算出)は主に移植優先順位判定に用いる</mark>という使い分けを意識する"],
+        severity:["<mark>既に肝硬変と分かっている患者に急性の意識障害・臓器障害が加わった状態であり、急性肝不全(ALF)ではなく、慢性肝疾患の急性増悪であるACLF(acute-on-chronic liver failure)の枠組みで考える</mark>","<mark>Child-Pugh点数(ビリルビン・アルブミン・PT-INR・腹水・脳症の5項目、5〜15点でA/B/Cに分類)</mark>を計算すると、本例はビリルビン3点・アルブミン3点・PT-INR2点・腹水2〜3点・脳症2点の<mark>12〜13点でC(重症)</mark>となる。<mark>MELDスコア(ビリルビン・PT-INR・クレアチニンから算出)は主に移植優先順位判定に用いる</mark>という使い分けを意識する(本例はMELD≈21)"],
         pattern:["<mark>肝性脳症と決めつける前に、低血糖・頭蓋内病変(凝固異常のある肝硬変患者では慢性硬膜下血腫などのリスクも高い)・アルコール離脱/Wernicke脳症・薬剤性(オピオイド・鎮静薬)など、他の意識障害の原因も除外</mark>する","そのうえで<mark>肝性脳症の「誘因」を探す</mark>。感染(特発性細菌性腹膜炎など)、消化管出血、脱水・利尿薬の過剰使用、電解質異常(低Na血症)、便秘などが代表的な誘因で、<mark>誘因を治療しないまま脳症治療薬だけで様子を見ても改善しない</mark>","<mark>アンモニア値は診断の補助にはなるが、単独では肝性脳症の診断も除外もできない</mark>(正常でも脳症は否定できず、高値でも他の原因による意識障害はありうる)。臨床像(羽ばたき振戦、見当識障害の程度)で判断する"],
         workup:["<mark>腹水穿刺は必須</mark>で、<mark>多形核白血球(PMN)数250/mm³以上は特発性細菌性腹膜炎(SBP)</mark>と診断する。本例はPMN312/mm³でSBPに該当する","電解質(Na・K)、腎機能、血糖、感染源(尿・胸部)のスクリーニングを行い、<mark>消化管出血の有無(直腸診・Hb推移)</mark>も確認する","腹部超音波/CTで肝硬変の評価に加え、新規の腫瘤性病変(肝細胞癌)がないかも確認する機会とする"],
         action:["<mark>SBPに対し、腹水培養提出後速やかに第三世代セファロスポリン(セフォタキシムまたはセフトリアキソン)を開始</mark>し、<mark>腎機能悪化(肝腎症候群)予防のためアルブミン投与</mark>を併用する","<mark>肝性脳症そのものにはラクツロースなどの合成二糖類±リファキシミンを開始</mark>するが、<mark>誘因(本例ではSBP)の治療を並行して行わなければ改善しない</mark>","NSAIDsや過度な利尿薬・鎮静薬は<mark>腎機能悪化や脳症増悪のリスクとなるため中止・見直し</mark>を行う","<mark>安定後は肝細胞癌サーベイランス(超音波±AFP)や静脈瘤の評価が継続されているかを確認</mark>し、専門医フォローにつなげる"]
       },
-      rx:["セフォタキシム2gを8時間ごと、またはセフトリアキソン2g/日を静注する。SBPの既往がある例では再発予防として長期の抗菌薬投与が検討される","アルブミン投与:診断時1.5g/kg、第3病日に1.0g/kgを目安に投与し、肝腎症候群への進展を予防する(特にCr上昇例で有用性が示されている)","ラクツロースを1日2〜3回の軟便が得られるよう調整して投与し、経口摂取困難な場合は注腸も検討する。誘因への対応と並行して行う"],
+      rx:["セフトリアキソン2g/日を静注する(セフォタキシムも選択肢だが、海外で用いられる2gを8時間ごとは国内添付文書の上限[1日4g]を超える)。SBPの既往がある例では再発予防として長期の抗菌薬投与が検討される","アルブミン投与:診断時1.5g/kg、第3病日に1.0g/kgを目安に投与し、肝腎症候群への進展を予防する(特にCr上昇例で有用性が示されている)","ラクツロースを1日2〜3回の軟便が得られるよう調整して投与し、経口摂取困難な場合は注腸も検討する。誘因への対応と並行して行う"],
       pitfall:"<mark>「肝硬変患者の意識障害=肝性脳症」と決めつけ、感染(SBP)や消化管出血などの誘因検索を省略してラクツロースだけで様子を見る</mark>のは典型的な誤り。誘因が未治療のままでは脳症は改善しない。逆に<mark>アンモニア値が正常だからといって肝性脳症を否定してしまう</mark>のも誤り。",
       pearl:["肝硬変患者に新たな臓器障害が加わった状態は<mark>ACLF</mark>として捉え、誘因(感染・出血・脱水など)の検索と是正を治療の中心に据える","<mark>Child-Pughは日常臨床での重症度・治療方針の目安、MELDは主に移植優先順位判定</mark>という使い分けを意識する","<mark>SBPの診断基準は腹水PMN数250/mm³以上</mark>であり、症状に乏しくても腹水穿刺を行う閾値を低く持つ","<mark>肝性脳症は誘因治療とセットで行う</mark>。アンモニア値は補助的指標にとどめ、単独診断・除外の根拠にしない","安定した外来フォローでは<mark>肝細胞癌サーベイランス</mark>など合併症スクリーニングを定期的に継続する"],
       refs:[ {title:"Recognition and Management of Spontaneous Bacterial Peritonitis", source:"University of Washington HCV/Liver Disease Online Curriculum", url:"https://www.hepatitisc.uw.edu/pdf/management-cirrhosis-related-complications/spontaneous-bacterial-peritonitis-recognition-management/core-concept/all.html"}, {author:"Sort P, Navasa M, Arroyo V, et al.", title:"Effect of intravenous albumin on renal impairment and mortality in patients with cirrhosis and spontaneous bacterial peritonitis（アルブミン1.5→1.0g/kg投与法の原著）", source:"New England Journal of Medicine 341:403-409", year:"1999", url:"https://pubmed.ncbi.nlm.nih.gov/10432325/"}, {title:"Use Of The Child Pugh Score In Liver Disease", source:"StatPearls, NCBI Bookshelf", url:"https://www.ncbi.nlm.nih.gov/books/NBK542308/"} ]
